@@ -19,7 +19,45 @@ How work is organized in this repository.
 5. Open a pull request to `main` with `Closes #<number>` in the description.
    Merging closes the issue.
 
-`main` must always work. Nothing is committed to it directly.
+`main` must always work.
+
+### Committing straight to `main`
+
+Allowed only for changes that can't break anything that runs:
+
+- `docs`: README, this guide, results, typos
+- `chore`: `.gitignore`, renames of files nothing refers to
+
+Everything else goes through an issue and a pull request: app code,
+Dockerfiles, manifests, `setup-cluster.sh`, the pipeline and experiment
+scripts. If you're unsure, it's not a direct commit.
+
+## Issues and labels
+
+There is no project board: the open issues are the plan. Every issue gets
+one label for its part, so the Issues tab can be filtered by label.
+
+| Label | For |
+| --- | --- |
+| `app` | Changes to Vote, Result or Worker and their Dockerfiles |
+| `k8s` | Kubernetes manifests |
+| `cluster` | Cluster setup: `setup-cluster.sh`, controllers, cert-manager |
+| `ci` | The GitHub Actions pipeline |
+| `experiment` | One experiment: what to run, what to measure, the result |
+| `docs` | README, write-up, slides |
+| `bug` | Something an experiment or a test proved broken (add it next to the part label) |
+
+Create them once:
+
+```bash
+gh label create app        --color 1d76db --description "Vote, Result, Worker, Dockerfiles"
+gh label create k8s        --color 326ce5 --description "Kubernetes manifests"
+gh label create cluster    --color 5319e7 --description "Cluster setup and controllers"
+gh label create ci         --color 0e8a16 --description "GitHub Actions pipeline"
+gh label create experiment --color fbca04 --description "An experiment and its result"
+gh label create docs       --color c5def5 --description "README, write-up, slides" --force
+gh label create bug        --color d73a4a --description "Proven broken" --force
+```
 
 ## Branch names
 
