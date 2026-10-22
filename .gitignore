@@ -1,0 +1,17 @@
+.DS_Store
+bin/
+obj/
+node_modules/
+__pycache__/
+*.pem
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars
+.env
+loadtest/last-k6*.txt
+# Ansible: tool caches and anything that looks like a Vault password
+.ansible/
+*.retry
+*vault-pass*
+*vault_pass*
