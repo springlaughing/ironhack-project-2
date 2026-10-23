@@ -1,0 +1,18 @@
+# The way in from outside: one Gateway, handled by NGINX Gateway Fabric.
+# Platform: the shared door, applied by setup-cluster.sh as admin.
+# The app's routes (k8s/app/httproute.yaml) attach to it.
+# No hostname yet: until HTTPS (issue #11) it answers on the NLB's own address.
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: voting-gateway
+  namespace: voting-app
+spec:
+  gatewayClassName: nginx          # created by the NGINX Gateway Fabric chart
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: Same               # only HTTPRoutes from voting-app may attach
