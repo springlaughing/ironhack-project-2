@@ -1,0 +1,61 @@
+# Redis: the vote queue. One pod, its data on an EBS volume.
+# Append-only file, as in Project 1: votes waiting in the queue survive a restart.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: redis-data
+  namespace: voting-app
+spec:
+  accessModes: ["ReadWriteOnce"]   # an EBS volume attaches to one node at a time
+  storageClassName: gp3
+  resources:
+    requests:
+      storage: 1Gi                 # the smallest gp3 volume
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: voting-app
+  labels:
+    app: redis
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate                 # the old pod must let go of the volume before the new one starts
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.4-alpine
+          args: ["redis-server", "--appendonly", "yes"]
+          ports:
+            - containerPort: 6379
+          readinessProbe:          # only send traffic once Redis answers
+            exec:
+              command: ["redis-cli", "ping"]
+            periodSeconds: 5
+          volumeMounts:
+            - name: data
+              mountPath: /data     # where Redis keeps its append-only file
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: redis-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis                      # Vote and Worker connect to "redis", their default REDIS_HOST
+  namespace: voting-app
+spec:
+  selector:
+    app: redis
+  ports:
+    - port: 6379
