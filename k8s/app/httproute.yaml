@@ -1,0 +1,28 @@
+# Which path goes where. App part: applied by the pipeline.
+# /result to Result, everything else to Vote, as in Project 1.
+# Result redirects /result to /result/ by itself, so its page and files load from /result/.
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: voting
+  namespace: voting-app
+spec:
+  parentRefs:
+    - name: voting-gateway         # attach to the Gateway in k8s/platform/gateway.yaml
+  rules:
+    # /result, /result/ and everything under it (page, app.js, socket.io) to Result
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /result
+      backendRefs:
+        - name: result
+          port: 80
+    # Everything else to Vote: /, /vote, /static/..., and the form's POST to /
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: vote
+          port: 80
