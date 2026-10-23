@@ -1,0 +1,74 @@
+# PostgreSQL: where the Worker saves the votes and Result reads the totals.
+# One pod, its data on an EBS volume. On its first start (empty volume) the image
+# creates the database with the user and password from the Secret db-credentials.
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: db-data
+  namespace: voting-app
+spec:
+  accessModes: ["ReadWriteOnce"]   # an EBS volume attaches to one node at a time
+  storageClassName: gp3
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: voting-app
+  labels:
+    app: postgres
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate                 # the old pod must let go of the volume before the new one starts
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:15-alpine          # same version as Project 1
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: username
+            - name: POSTGRES_PASSWORD        # used once, when the database is created
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
+            - name: PGDATA                   # a subfolder: a new EBS volume holds lost+found,
+              value: /var/lib/postgresql/data/pgdata   # and PostgreSQL refuses a non-empty folder
+          ports:
+            - containerPort: 5432
+          readinessProbe:                    # only send traffic once PostgreSQL accepts connections
+            exec:
+              command: ["sh", "-c", "pg_isready -U \"$POSTGRES_USER\""]
+            periodSeconds: 5
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: db-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db                         # Worker and Result connect to "db", their default DB_HOST / PG_HOST
+  namespace: voting-app
+spec:
+  selector:
+    app: postgres
+  ports:
+    - port: 5432
