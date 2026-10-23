@@ -1,10 +1,11 @@
 # Extra rights for the pipeline that AWS's Edit access policy doesn't include.
-# AmazonEKSEditPolicy covers Kubernetes' built-in objects; HTTPRoutes come from the
-# Gateway API CRDs (gateway.networking.k8s.io), so the pipeline couldn't apply
-# k8s/app/httproute.yaml (#7: can-i create httproutes -> no).
+# AmazonEKSEditPolicy covers Kubernetes' built-in objects; HTTPRoutes and Gateways
+# come from the Gateway API CRDs (gateway.networking.k8s.io), so without this the
+# pipeline could neither apply k8s/app/httproute.yaml (#7: can-i create httproutes -> no)
+# nor read the Gateway's address for the smoke test (#8).
 # The pipeline's role is in the Kubernetes group voting-deployers (access entry,
 # setup-cluster.sh step 6). Applied by setup-cluster.sh as admin, so the pipeline
-# can't change its own rights. Gateways stay platform: no rights on them here.
+# can't change its own rights. Gateways stay platform: read only.
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
@@ -14,6 +15,9 @@ rules:
   - apiGroups: ["gateway.networking.k8s.io"]
     resources: ["httproutes"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: ["gateway.networking.k8s.io"]
+    resources: ["gateways"]
+    verbs: ["get", "list", "watch"]          # read the address, never change the Gateway
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
