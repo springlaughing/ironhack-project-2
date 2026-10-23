@@ -1,5 +1,5 @@
 # Vote: the page where people vote. Puts each vote into the Redis queue.
-# Two pods, so voting continues if one is replaced or its node fails.
+# Two pods on two different nodes, so voting continues if one is replaced or its node fails.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,6 +17,14 @@ spec:
       labels:
         app: vote
     spec:
+      # Never two Vote pods on one node: losing a node never stops voting.
+      topologySpreadConstraints:
+        - maxSkew: 1                           # pods per node may differ by at most 1
+          topologyKey: kubernetes.io/hostname  # "spread over nodes" (zone would be topology.kubernetes.io/zone)
+          whenUnsatisfiable: DoNotSchedule     # rather wait (Pending) than break the rule
+          labelSelector:
+            matchLabels:
+              app: vote
       enableServiceLinks: false    # no Docker-style REDIS_PORT=tcp://... variables: they broke int(REDIS_PORT)
       containers:
         - name: vote
@@ -29,9 +37,28 @@ spec:
                  "--workers", "2", "--threads", "4", "--keep-alive", "0"]
           ports:
             - containerPort: 80
-          # REDIS_HOST keeps its default, redis. No probes yet: issue #5,
-          # and rollout run A (no probes) needs this version as its baseline.
-
+          # REDIS_HOST keeps its default, redis.
+          # Ready = this pod can serve the page. Not /health: all Vote pods share one Redis,
+          # so a Redis outage would take every pod out at once and hide the app's own error message.
+          readinessProbe:
+            httpGet:
+              path: /vote
+              port: 80
+            periodSeconds: 5
+            failureThreshold: 2
+          # On shutdown, keep serving for 10 s while the Gateway removes this pod from its list,
+          # then gunicorn gets SIGTERM and finishes the requests in flight.
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sleep", "10"]
+          resources:
+            requests:                  # reserved on the node; the scheduler plans with these
+              cpu: 100m                # 0.1 CPU
+              memory: 128Mi
+            limits:                    # the most it may use
+              cpu: 500m                # throttled above half a CPU
+              memory: 256Mi            # killed (OOMKilled) above this
 ---
 apiVersion: v1
 kind: Service

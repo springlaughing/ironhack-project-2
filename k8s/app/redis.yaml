@@ -41,6 +41,13 @@ spec:
             exec:
               command: ["redis-cli", "ping"]
             periodSeconds: 5
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi        # the queue; thousands of waiting votes fit easily
           volumeMounts:
             - name: data
               mountPath: /data     # where Redis keeps its append-only file
