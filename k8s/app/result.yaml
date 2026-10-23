@@ -35,6 +35,19 @@ spec:
                   key: password
           ports:
             - containerPort: 80
+          readinessProbe:              # ready once Node.js answers; "/" serves the page
+            httpGet:
+              path: /
+              port: 80
+            periodSeconds: 5
+            failureThreshold: 2
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
 ---
 apiVersion: v1
 kind: Service

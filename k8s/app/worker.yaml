@@ -23,6 +23,9 @@ spec:
       labels:
         app: worker
     spec:
+      # Time between SIGTERM and a hard kill (SIGKILL, exit code 137). The Worker finishes
+      # the vote in hand on SIGTERM; 30 s as stop_grace_period in Project 1.
+      terminationGracePeriodSeconds: 30
       containers:
         - name: worker
           image: springlaughing/voting-worker:076c2f6   # Project 1 image, all fixes included
@@ -37,6 +40,13 @@ spec:
                 secretKeyRef:
                   name: db-credentials
                   key: password
+          resources:                   # limits as in Project 1's compose file: 0.5 CPU, 256M
+            requests:
+              cpu: 50m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
 ---
 # Headless Service (no IP of its own): a StatefulSet needs one for its pods'
 # stable network names. Nobody connects to the Worker, so no ports.
