@@ -13,6 +13,9 @@ NAMESPACE="voting-app"
 GATEWAY_API_VERSION="v1.2.1"     # same as the lab (ingress-gateway/setup/04-install-gateway-api.sh)
 NGF_CHART_VERSION="1.5.1"        # NGINX Gateway Fabric version the lab installed
 DB_SECRET_ID="voting/db-password"
+PIPELINE_ROLE="gha-voting-deploy-${NAME}"   # from terraform/iam/ (#7)
+PIPELINE_GROUP="voting-deployers"           # Kubernetes group for extra RBAC (k8s/platform/pipeline-rbac.yaml)
+EDIT_POLICY="arn:aws:eks::aws:cluster-access-policy/AmazonEKSEditPolicy"
 
 cd "$(dirname "$0")"             # so k8s/... paths work from anywhere
 log() { echo; echo "==> $*"; }
@@ -73,7 +76,27 @@ kubectl create secret generic db-credentials -n "$NAMESPACE" \
   --dry-run=client -o yaml | kubectl apply -f -
 unset PG
 
-# 6. The app, so it runs before the pipeline's first deploy
+# 6. The pipeline's way into the cluster (#7). Its IAM role (terraform/iam/) gets an
+#    access entry: edit rights in voting-app only, plus the Kubernetes group
+#    voting-deployers for anything edit doesn't cover. The entry lives in the cluster,
+#    so it's gone after down.sh and created again here after every up.sh.
+log "Giving ${PIPELINE_ROLE} edit rights in ${NAMESPACE} only"
+PIPELINE_ROLE_ARN=$(aws iam get-role --role-name "$PIPELINE_ROLE" --query Role.Arn --output text)
+if aws eks describe-access-entry --cluster-name "$CLUSTER" --region "$REGION" \
+     --principal-arn "$PIPELINE_ROLE_ARN" >/dev/null 2>&1; then
+  echo "  access entry already exists"
+else
+  aws eks create-access-entry --cluster-name "$CLUSTER" --region "$REGION" \
+    --principal-arn "$PIPELINE_ROLE_ARN" --kubernetes-groups "$PIPELINE_GROUP" \
+    --type STANDARD --no-cli-pager >/dev/null
+  echo "  access entry created (group ${PIPELINE_GROUP})"
+fi
+aws eks associate-access-policy --cluster-name "$CLUSTER" --region "$REGION" \
+  --principal-arn "$PIPELINE_ROLE_ARN" --policy-arn "$EDIT_POLICY" \
+  --access-scope type=namespace,namespaces="$NAMESPACE" --no-cli-pager >/dev/null
+echo "  AmazonEKSEditPolicy, scope: namespace ${NAMESPACE}"
+
+# 7. The app, so it runs before the pipeline's first deploy
 log "Applying the app"
 kubectl apply -f k8s/app/
 kubectl rollout status deployment/redis    -n "$NAMESPACE" --timeout=5m
@@ -83,10 +106,9 @@ kubectl rollout status deployment/vote     -n "$NAMESPACE" --timeout=5m
 kubectl rollout status deployment/result   -n "$NAMESPACE" --timeout=5m
 
 # Later issues add their steps here:
-#   #7  access entry for the pipeline role (edit in voting-app only)
 #   #11 external-dns and cert-manager with their Pod Identity associations, ClusterIssuer
 
-# 7. Where to find it. A new NLB's DNS name can take a few minutes to work.
+# 8. Where to find it. A new NLB's DNS name can take a few minutes to work.
 log "Waiting for the Gateway's address"
 GW=""
 for _ in $(seq 1 30); do
@@ -97,7 +119,7 @@ done
 echo "  Vote:   http://${GW}/vote"
 echo "  Result: http://${GW}/result"
 
-# 8. Does it really work? Pages through the Gateway, plus one vote all the way to PostgreSQL.
+# 9. Does it really work? Pages through the Gateway, plus one vote all the way to PostgreSQL.
 #    Waits for a new NLB's DNS by itself.
 log "Smoke test"
 ./smoke-test.sh

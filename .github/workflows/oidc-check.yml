@@ -1,0 +1,69 @@
+# #7: can GitHub Actions reach AWS and the cluster, and only as far as planned?
+# No stored keys: the job asks GitHub for an OIDC token and trades it for the
+# role gha-voting-deploy-evgenia (terraform/iam/), which trusts main only.
+#   Test A: a push to the branch ci-oidc-role runs this on another branch -> AWS login refused
+#   On main: gh workflow run oidc-check.yml --ref main -> login works, rights checked
+name: oidc-check
+
+on:
+  workflow_dispatch:          # start by hand: gh workflow run oidc-check.yml --ref <branch>
+  push:
+    branches: [ci-oidc-role]  # Test A: every push to the feature branch
+
+permissions:
+  id-token: write   # let the job ask GitHub for an OIDC token
+  contents: read    # read the repo, nothing more
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log in to AWS with OIDC (no stored keys)
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: ${{ vars.AWS_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION }}
+
+      - name: Who am I in AWS?
+        run: aws sts get-caller-identity
+
+      - name: Connect kubectl to the cluster
+        run: aws eks update-kubeconfig --name "${{ vars.EKS_CLUSTER_NAME }}" --region "${{ vars.AWS_REGION }}"
+
+      - name: Who am I in Kubernetes?
+        run: kubectl auth whoami
+
+      - name: What may I do? (yes = needed by the pipeline, no = must stay out of reach)
+        env:
+          NS: ${{ vars.K8S_NAMESPACE }}
+        run: |
+          check() { printf '%-70s %s\n' "can-i $*" "$(kubectl auth can-i "$@" 2>&1 || true)"; }
+          echo "--- in ${NS}: should be yes"
+          check get pods -n "$NS"
+          check create deployments.apps -n "$NS"
+          check patch statefulsets.apps -n "$NS"
+          check create services -n "$NS"
+          check create secrets -n "$NS"
+          check create httproutes.gateway.networking.k8s.io -n "$NS"
+          echo "--- platform and other namespaces: should be no"
+          check delete gateways.gateway.networking.k8s.io -n "$NS"
+          check get secrets -n cert-manager
+          check get secrets -n kube-system
+          check create deployments.apps -n default
+          check list nodes
+          check create namespaces
+          check create rolebindings.rbac.authorization.k8s.io -n "$NS"
+
+      - name: "Test B: kube-system must be forbidden"
+        run: |
+          if kubectl get pods -n kube-system; then
+            echo "FAIL: the pipeline can read kube-system"; exit 1
+          else
+            echo "ok: forbidden, as planned"
+          fi
+
+      - name: Read the DB password (length only, never the value)
+        run: |
+          PG=$(aws secretsmanager get-secret-value --secret-id voting/db-password \
+            --query SecretString --output text)
+          echo "voting/db-password readable, ${#PG} characters"
