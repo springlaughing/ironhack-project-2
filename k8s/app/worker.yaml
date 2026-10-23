@@ -1,0 +1,51 @@
+# Worker: moves votes from the Redis queue into PostgreSQL.
+# A StatefulSet, not a Deployment: its pods get fixed names (worker-0, -1, -2).
+# The Worker names its in-progress list after its host name
+# (votes:processing:worker-1), so a restarted worker-1 finds and finishes
+# the vote its predecessor had in hand. A Deployment's random pod names
+# would leave that list behind forever.
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: worker
+  namespace: voting-app
+  labels:
+    app: worker
+spec:
+  serviceName: worker              # required for a StatefulSet: the headless Service below
+  replicas: 3                      # same count as Project 1
+  podManagementPolicy: Parallel    # start and stop all three at once, not one by one
+  selector:
+    matchLabels:
+      app: worker
+  template:
+    metadata:
+      labels:
+        app: worker
+    spec:
+      containers:
+        - name: worker
+          image: springlaughing/voting-worker:076c2f6   # Project 1 image, all fixes included
+          env:                     # DB_HOST (db) and REDIS_HOST (redis) keep their defaults
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
+---
+# Headless Service (no IP of its own): a StatefulSet needs one for its pods'
+# stable network names. Nobody connects to the Worker, so no ports.
+apiVersion: v1
+kind: Service
+metadata:
+  name: worker
+  namespace: voting-app
+spec:
+  clusterIP: None
+  selector:
+    app: worker

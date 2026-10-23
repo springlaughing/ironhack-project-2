@@ -1,0 +1,45 @@
+# Vote: the page where people vote. Puts each vote into the Redis queue.
+# Two pods, so voting continues if one is replaced or its node fails.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: vote
+  namespace: voting-app
+  labels:
+    app: vote
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: vote
+  template:
+    metadata:
+      labels:
+        app: vote
+    spec:
+      enableServiceLinks: false    # no Docker-style REDIS_PORT=tcp://... variables: they broke int(REDIS_PORT)
+      containers:
+        - name: vote
+          image: springlaughing/voting-vote:e0035c5     # Project 1 image, all fixes included
+          # Replaces the image's start command (CMD), as Ansible did in Project 1:
+          # gunicorn with threads, the change that made voting 85x faster.
+          # 2 processes x 4 threads per pod; more capacity = more pods, not more processes.
+          args: ["gunicorn", "app:app", "-b", "0.0.0.0:80",
+                 "--log-file", "-", "--access-logfile", "-",
+                 "--workers", "2", "--threads", "4", "--keep-alive", "0"]
+          ports:
+            - containerPort: 80
+          # REDIS_HOST keeps its default, redis. No probes yet: issue #5,
+          # and rollout run A (no probes) needs this version as its baseline.
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vote                       # the HTTPRoute (issue #4) sends / and /vote here
+  namespace: voting-app
+spec:
+  selector:
+    app: vote
+  ports:
+    - port: 80

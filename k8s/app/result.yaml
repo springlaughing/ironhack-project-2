@@ -1,0 +1,48 @@
+# Result: the live results page. Reads the totals from PostgreSQL every second
+# and pushes them to the browser over Socket.IO (path /result/socket.io).
+# One pod: with two, a browser's Socket.IO requests could land on different pods
+# and break, unless the Gateway kept each browser on one pod (sticky sessions).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: result
+  namespace: voting-app
+  labels:
+    app: result
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: result
+  template:
+    metadata:
+      labels:
+        app: result
+    spec:
+      containers:
+        - name: result
+          image: springlaughing/voting-result:076c2f6   # Project 1 image, all fixes included
+          env:                     # PG_HOST keeps its default, db
+            - name: PG_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: username
+            - name: PG_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-credentials
+                  key: password
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: result                     # the HTTPRoute (issue #4) sends /result here
+  namespace: voting-app
+spec:
+  selector:
+    app: result
+  ports:
+    - port: 80
