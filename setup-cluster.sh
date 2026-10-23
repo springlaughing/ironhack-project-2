@@ -96,4 +96,8 @@ for _ in $(seq 1 30); do
 done
 echo "  Vote:   http://${GW}/vote"
 echo "  Result: http://${GW}/result"
-echo "  (if the page doesn't load yet, wait 2-3 minutes for the NLB's DNS)"
+
+# 8. Does it really work? Pages through the Gateway, plus one vote all the way to PostgreSQL.
+#    Waits for a new NLB's DNS by itself.
+log "Smoke test"
+./smoke-test.sh
