@@ -1,0 +1,8 @@
+# Everything of the voting app lives in this namespace.
+# Platform part: applied by setup-cluster.sh as admin. The pipeline may only
+# change what's inside it, not create or delete the namespace itself.
+# Deleting it removes the app, including the volumes' EBS disks.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: voting-app
