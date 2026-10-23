@@ -65,6 +65,7 @@ log "Applying platform manifests"
 kubectl apply -f k8s/platform/namespace.yaml
 kubectl apply -f k8s/platform/storageclass.yaml      # before any PVC (Problems and fixes 3)
 kubectl apply -f k8s/platform/gateway.yaml
+kubectl apply -f k8s/platform/pipeline-rbac.yaml     # HTTPRoutes for the pipeline's group (#7)
 
 # 5. The database password: from Secrets Manager into a Kubernetes Secret.
 #    Never printed, never in a file. "create --dry-run | apply" = create or update.
