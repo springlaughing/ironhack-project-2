@@ -1,0 +1,9 @@
+18:47:38 run BG: blue = deployment/vote (6 replicas, springlaughing/voting-vote:034d636)
+18:47:48 green ready: 6 pods
+18:48:21 k6 start: first vote saved (50 votes/s for 180s, burst at 60s)
+18:49:21 switch start: Service vote -> app=vote-green
+18:49:24 switch done: selector is now app=vote-green
+18:52:53 samplers done
+18:52:57 rollback: Service vote -> app=vote
+18:52:59 rollback done: selector is now app=vote
+18:53:15 green deleted
