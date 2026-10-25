@@ -1,0 +1,7 @@
+13:14:20 run A: deployment/vote (springlaughing/voting-vote:034d636)
+13:14:22 clocks: here 13:14:20, cluster 13:14:22
+13:14:24 k6 start: 50 votes/s for 180s to https://k8s.springlaughing.dev/
+13:15:24 update start: kubectl rollout restart deployment/vote
+13:15:28 update done
+13:17:26 k6 done
+13:18:56 samplers done

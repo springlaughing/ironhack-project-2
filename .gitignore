@@ -14,4 +14,4 @@ loadtest/last-k6*.txt
 .ansible/
 *.retry
 *vault-pass*
-*vault_pass*
+*vault_pass*loadtest/results/*-k6.csv

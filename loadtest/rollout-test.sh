@@ -7,11 +7,13 @@
 # a new image, but with the same image, so the only difference between runs is the setup.
 # Steps:
 #   1. delete this run's votes from an earlier try (k6f-<RUN>-...)
-#   2. start two samplers inside the pods, once a second: Redis queue, saved votes
-#   3. start k6: 50 votes/s for 3 minutes (loadtest/vote-steady.js)
+#   2. start three samplers, once a second: Redis queue and saved votes (inside the pods),
+#      and the workload's pods (version, ready, shutting down)
+#   3. start k6: 50 votes/s for 3 minutes (loadtest/vote-steady.js), every vote also in a CSV
 #   4. 60 s later: rollout restart, wait until done; both times noted
 #   5. wait for k6, then for the samplers (they run 90 s longer, so the Worker can catch up)
 #   6. print: accepted, refused (by whom), saved in PostgreSQL, lost
+#   7. draw the timeline: loadtest/plot.py -> loadtest/results/<RUN>-timeline.png
 # Everything lands in loadtest/results/<RUN>-*.
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -22,6 +24,7 @@ NS="voting-app"
 K6_SECONDS="${K6_SECONDS:-180}"     # how long k6 sends votes
 UPDATE_AFTER="${UPDATE_AFTER:-60}"  # when the update starts, seconds after k6
 SAMPLE_SECONDS=$(( K6_SECONDS + 90 ))
+APP="${WORKLOAD#*/}"                # deployment/vote -> vote (the pods' app label)
 export RUN RATE="${RATE:-50}" DURATION="${K6_SECONDS}s" TARGET="${TARGET:-https://k8s.springlaughing.dev/}"
 
 OUT="loadtest/results"
@@ -31,12 +34,27 @@ note() { echo "$(date -u +%T) $*" | tee -a "$OUT/$RUN-events.txt"; }
 metric() { grep -E "^ *$1[.:]" "$OUT/$RUN-k6.txt" | awk '{print $2}' | head -1 || true; }   # a k6 summary number
 trap 'kill $(jobs -p) 2>/dev/null || true' EXIT   # stopped early: stop k6 and the samplers too
 
+# Once a second, one line per pod: time, name, version (template hash), ready, shutting down.
+# Deployment pods carry pod-template-hash, StatefulSet pods controller-revision-hash.
+sample_pods() {
+  local end=$(( $(date +%s) + SAMPLE_SECONDS )) t
+  echo "time_utc,pod,version,ready,terminating"
+  while [ "$(date +%s)" -lt "$end" ]; do
+    t=$(date -u +%T)
+    kubectl get pods -n "$NS" -l "app=${APP}" -o jsonpath='{range .items[*]}{.metadata.name},{.metadata.labels.pod-template-hash}{.metadata.labels.controller-revision-hash},{.status.containerStatuses[0].ready},{.metadata.deletionTimestamp}{"\n"}{end}' \
+      | sed "s/^/${t},/"
+    sleep 1
+  done
+}
+
 # k6: the local binary if there is one, otherwise the Docker image (as in Project 1)
 if command -v k6 >/dev/null; then
-  K6=(k6 run -)
+  K6=(k6 run --out "csv=${OUT}/${RUN}-k6.csv" -)
 else
+  # -u: run as me, so k6 may write its CSV into my folder (mounted as /results)
   docker pull -q grafana/k6:0.54.0 >/dev/null
-  K6=(docker run --rm -i -e RUN -e RATE -e DURATION -e TARGET grafana/k6:0.54.0 run -)
+  K6=(docker run --rm -i -u "$(id -u):$(id -g)" -v "$PWD/$OUT:/results"
+      -e RUN -e RATE -e DURATION -e TARGET grafana/k6:0.54.0 run --out "csv=/results/${RUN}-k6.csv" -)
 fi
 
 note "run ${RUN}: ${WORKLOAD} ($(kubectl get "$WORKLOAD" -n "$NS" -o jsonpath='{.spec.template.spec.containers[0].image}'))"
@@ -49,6 +67,8 @@ QUEUE_PID=$!
 kubectl exec -i -n "$NS" deploy/postgres -- sh -s "$RUN" "$SAMPLE_SECONDS" \
   < loadtest/sample-db.sh > "$OUT/$RUN-saved.csv" &
 SAVED_PID=$!
+sample_pods > "$OUT/$RUN-pods.csv" &
+PODS_PID=$!
 
 note "k6 start: ${RATE} votes/s for ${DURATION} to ${TARGET}"
 "${K6[@]}" < loadtest/vote-steady.js > "$OUT/$RUN-k6.txt" 2>&1 &
@@ -64,7 +84,7 @@ kubectl get pods -n "$NS" -l "app=${WORKLOAD#*/}" -o wide
 wait "$K6_PID" || true
 note "k6 done"
 echo "waiting for the samplers (the Worker saves the last votes meanwhile) ..."
-wait "$QUEUE_PID" "$SAVED_PID" || true
+wait "$QUEUE_PID" "$SAVED_PID" "$PODS_PID" || true
 note "samplers done"
 
 SENT=$(metric http_reqs);              SENT=${SENT:-0}
@@ -85,3 +105,6 @@ SAVED=$(kubectl exec -n "$NS" deploy/postgres -- psql -U postgres -tAc \
   grep -o '[0-9T:.-]*Z refused.*' "$OUT/$RUN-k6.txt" | sed -n '1p;$p' || true
   grep -E "http_req_duration|iteration_duration" "$OUT/$RUN-k6.txt" || true
 } | tee "$OUT/$RUN-summary.txt"
+
+# 7. the timeline picture (needs python3 with matplotlib)
+python3 loadtest/plot.py "$RUN" || echo "  no picture: python3 -c 'import matplotlib' fails? sudo apt install -y python3-matplotlib"
