@@ -1,0 +1,471 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+     execution: local
+        script: loadtest/vote-steady.js
+        output: csv (/home/cloudshell-user/C-k6.csv)
+
+     scenarios: (100.00%) 2 scenarios, 1800 max VUs, 3m30s max duration (incl. graceful stop):
+              * steady: 50.00 iterations/s for 3m0s (maxVUs: 100-600, gracefulStop: 30s)
+              * burst: 400.00 iterations/s for 5s (maxVUs: 800-1200, exec: burst, startTime: 1m0s, gracefulStop: 30s)
+
+
+running (0m00.3s), 0001/0900 VUs, 14 complete and 0 interrupted iterations
+steady   [   0% ] 001/100 VUs  0m00.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m59.7s      
+
+running (0m01.3s), 0001/0900 VUs, 64 complete and 0 interrupted iterations
+steady   [   1% ] 001/100 VUs  0m01.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m58.7s      
+
+running (0m02.3s), 0001/0900 VUs, 114 complete and 0 interrupted iterations
+steady   [   1% ] 001/100 VUs  0m02.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m57.7s      
+
+running (0m03.3s), 0001/0900 VUs, 164 complete and 0 interrupted iterations
+steady   [   2% ] 001/100 VUs  0m03.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m56.7s      
+
+running (0m04.3s), 0001/0900 VUs, 214 complete and 0 interrupted iterations
+steady   [   2% ] 001/100 VUs  0m04.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m55.7s      
+
+running (0m05.3s), 0001/0900 VUs, 264 complete and 0 interrupted iterations
+steady   [   3% ] 001/100 VUs  0m05.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m54.7s      
+
+running (0m06.3s), 0001/0900 VUs, 314 complete and 0 interrupted iterations
+steady   [   3% ] 001/100 VUs  0m06.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m53.7s      
+
+running (0m07.3s), 0001/0900 VUs, 364 complete and 0 interrupted iterations
+steady   [   4% ] 001/100 VUs  0m07.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m52.7s      
+
+running (0m08.3s), 0001/0900 VUs, 414 complete and 0 interrupted iterations
+steady   [   5% ] 001/100 VUs  0m08.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m51.7s      
+
+running (0m09.3s), 0001/0900 VUs, 464 complete and 0 interrupted iterations
+steady   [   5% ] 001/100 VUs  0m09.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m50.7s      
+
+running (0m10.3s), 0001/0900 VUs, 514 complete and 0 interrupted iterations
+steady   [   6% ] 001/100 VUs  0m10.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m49.7s      
+
+running (0m11.3s), 0001/0900 VUs, 564 complete and 0 interrupted iterations
+steady   [   6% ] 001/100 VUs  0m11.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m48.7s      
+
+running (0m12.3s), 0001/0900 VUs, 614 complete and 0 interrupted iterations
+steady   [   7% ] 001/100 VUs  0m12.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m47.7s      
+
+running (0m13.3s), 0003/0900 VUs, 662 complete and 0 interrupted iterations
+steady   [   7% ] 003/100 VUs  0m13.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m46.7s      
+
+running (0m14.3s), 0001/0900 VUs, 714 complete and 0 interrupted iterations
+steady   [   8% ] 001/100 VUs  0m14.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m45.7s      
+
+running (0m15.3s), 0001/0900 VUs, 764 complete and 0 interrupted iterations
+steady   [   8% ] 001/100 VUs  0m15.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m44.7s      
+
+running (0m16.3s), 0001/0900 VUs, 814 complete and 0 interrupted iterations
+steady   [   9% ] 001/100 VUs  0m16.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m43.7s      
+
+running (0m17.3s), 0001/0900 VUs, 864 complete and 0 interrupted iterations
+steady   [  10% ] 001/100 VUs  0m17.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m42.7s      
+
+running (0m18.3s), 0001/0900 VUs, 914 complete and 0 interrupted iterations
+steady   [  10% ] 001/100 VUs  0m18.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m41.7s      
+
+running (0m19.3s), 0001/0900 VUs, 964 complete and 0 interrupted iterations
+steady   [  11% ] 001/100 VUs  0m19.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m40.7s      
+
+running (0m20.3s), 0001/0900 VUs, 1014 complete and 0 interrupted iterations
+steady   [  11% ] 001/100 VUs  0m20.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m39.7s      
+
+running (0m21.3s), 0001/0900 VUs, 1064 complete and 0 interrupted iterations
+steady   [  12% ] 001/100 VUs  0m21.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m38.7s      
+
+running (0m22.3s), 0001/0900 VUs, 1114 complete and 0 interrupted iterations
+steady   [  12% ] 001/100 VUs  0m22.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m37.7s      
+
+running (0m23.3s), 0001/0900 VUs, 1164 complete and 0 interrupted iterations
+steady   [  13% ] 001/100 VUs  0m23.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m36.7s      
+
+running (0m24.3s), 0001/0900 VUs, 1214 complete and 0 interrupted iterations
+steady   [  13% ] 001/100 VUs  0m24.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m35.7s      
+
+running (0m25.3s), 0001/0900 VUs, 1264 complete and 0 interrupted iterations
+steady   [  14% ] 001/100 VUs  0m25.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m34.7s      
+
+running (0m26.3s), 0001/0900 VUs, 1314 complete and 0 interrupted iterations
+steady   [  15% ] 001/100 VUs  0m26.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m33.7s      
+
+running (0m27.3s), 0001/0900 VUs, 1364 complete and 0 interrupted iterations
+steady   [  15% ] 001/100 VUs  0m27.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m32.7s      
+
+running (0m28.3s), 0001/0900 VUs, 1414 complete and 0 interrupted iterations
+steady   [  16% ] 001/100 VUs  0m28.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m31.7s      
+
+running (0m29.3s), 0001/0900 VUs, 1464 complete and 0 interrupted iterations
+steady   [  16% ] 001/100 VUs  0m29.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m30.7s      
+
+running (0m30.3s), 0001/0900 VUs, 1514 complete and 0 interrupted iterations
+steady   [  17% ] 001/100 VUs  0m30.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m29.7s      
+
+running (0m31.3s), 0001/0900 VUs, 1564 complete and 0 interrupted iterations
+steady   [  17% ] 001/100 VUs  0m31.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m28.7s      
+
+running (0m32.3s), 0001/0900 VUs, 1614 complete and 0 interrupted iterations
+steady   [  18% ] 001/100 VUs  0m32.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m27.7s      
+
+running (0m33.3s), 0001/0900 VUs, 1664 complete and 0 interrupted iterations
+steady   [  18% ] 001/100 VUs  0m33.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m26.7s      
+
+running (0m34.3s), 0001/0900 VUs, 1714 complete and 0 interrupted iterations
+steady   [  19% ] 001/100 VUs  0m34.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m25.7s      
+
+running (0m35.3s), 0001/0900 VUs, 1764 complete and 0 interrupted iterations
+steady   [  20% ] 001/100 VUs  0m35.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m24.7s      
+
+running (0m36.3s), 0001/0900 VUs, 1814 complete and 0 interrupted iterations
+steady   [  20% ] 001/100 VUs  0m36.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m23.7s      
+
+running (0m37.3s), 0001/0900 VUs, 1864 complete and 0 interrupted iterations
+steady   [  21% ] 001/100 VUs  0m37.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m22.7s      
+
+running (0m38.3s), 0001/0900 VUs, 1914 complete and 0 interrupted iterations
+steady   [  21% ] 001/100 VUs  0m38.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m21.7s      
+
+running (0m39.3s), 0001/0900 VUs, 1964 complete and 0 interrupted iterations
+steady   [  22% ] 001/100 VUs  0m39.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m20.7s      
+
+running (0m40.3s), 0001/0900 VUs, 2014 complete and 0 interrupted iterations
+steady   [  22% ] 001/100 VUs  0m40.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m19.7s      
+
+running (0m41.3s), 0001/0900 VUs, 2064 complete and 0 interrupted iterations
+steady   [  23% ] 001/100 VUs  0m41.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m18.7s      
+
+running (0m42.3s), 0001/0900 VUs, 2114 complete and 0 interrupted iterations
+steady   [  23% ] 001/100 VUs  0m42.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m17.7s      
+
+running (0m43.3s), 0001/0900 VUs, 2164 complete and 0 interrupted iterations
+steady   [  24% ] 001/100 VUs  0m43.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m16.7s      
+
+running (0m44.3s), 0001/0900 VUs, 2214 complete and 0 interrupted iterations
+steady   [  25% ] 001/100 VUs  0m44.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m15.7s      
+
+running (0m45.3s), 0001/0900 VUs, 2264 complete and 0 interrupted iterations
+steady   [  25% ] 001/100 VUs  0m45.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m14.7s      
+
+running (0m46.3s), 0001/0900 VUs, 2314 complete and 0 interrupted iterations
+steady   [  26% ] 001/100 VUs  0m46.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m13.7s      
+
+running (0m47.3s), 0001/0900 VUs, 2364 complete and 0 interrupted iterations
+steady   [  26% ] 001/100 VUs  0m47.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m12.7s      
+
+running (0m48.3s), 0001/0900 VUs, 2414 complete and 0 interrupted iterations
+steady   [  27% ] 001/100 VUs  0m48.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m11.7s      
+
+running (0m49.3s), 0001/0900 VUs, 2464 complete and 0 interrupted iterations
+steady   [  27% ] 001/100 VUs  0m49.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m10.7s      
+
+running (0m50.3s), 0001/0900 VUs, 2514 complete and 0 interrupted iterations
+steady   [  28% ] 001/100 VUs  0m50.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m09.7s      
+
+running (0m51.3s), 0001/0900 VUs, 2564 complete and 0 interrupted iterations
+steady   [  28% ] 001/100 VUs  0m51.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m08.7s      
+
+running (0m52.3s), 0001/0900 VUs, 2614 complete and 0 interrupted iterations
+steady   [  29% ] 001/100 VUs  0m52.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m07.7s      
+
+running (0m53.3s), 0001/0900 VUs, 2664 complete and 0 interrupted iterations
+steady   [  30% ] 001/100 VUs  0m53.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m06.7s      
+
+running (0m54.3s), 0001/0900 VUs, 2714 complete and 0 interrupted iterations
+steady   [  30% ] 001/100 VUs  0m54.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m05.7s      
+
+running (0m55.3s), 0001/0900 VUs, 2764 complete and 0 interrupted iterations
+steady   [  31% ] 001/100 VUs  0m55.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m04.7s      
+
+running (0m56.3s), 0001/0900 VUs, 2814 complete and 0 interrupted iterations
+steady   [  31% ] 001/100 VUs  0m56.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m03.7s      
+
+running (0m57.3s), 0001/0900 VUs, 2864 complete and 0 interrupted iterations
+steady   [  32% ] 001/100 VUs  0m57.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m02.7s      
+
+running (0m58.3s), 0001/0900 VUs, 2914 complete and 0 interrupted iterations
+steady   [  32% ] 001/100 VUs  0m58.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m01.7s      
+
+running (0m59.3s), 0001/0900 VUs, 2964 complete and 0 interrupted iterations
+steady   [  33% ] 001/100 VUs  0m59.3s/3m0s  50.00 iters/s
+burst  • [   0% ] waiting      0m00.7s      
+
+running (1m00.3s), 0053/0900 VUs, 3081 complete and 0 interrupted iterations
+steady   [  34% ] 002/100 VUs    1m00.3s/3m0s  50.00 iters/s
+burst    [   6% ] 0051/0800 VUs  0.3s/5s       400.00 iters/s
+
+running (1m01.3s), 0221/0900 VUs, 3358 complete and 0 interrupted iterations
+steady   [  34% ] 008/100 VUs    1m01.3s/3m0s  50.00 iters/s
+burst    [  26% ] 0213/0800 VUs  1.3s/5s       400.00 iters/s
+
+running (1m02.4s), 0409/0900 VUs, 3591 complete and 0 interrupted iterations
+steady   [  35% ] 027/100 VUs    1m02.4s/3m0s  50.00 iters/s
+burst    [  48% ] 0382/0800 VUs  2.4s/5s       400.00 iters/s
+
+running (1m03.3s), 0332/0900 VUs, 4147 complete and 0 interrupted iterations
+steady   [  35% ] 028/100 VUs    1m03.3s/3m0s  50.00 iters/s
+burst    [  66% ] 0304/0800 VUs  3.3s/5s       400.00 iters/s
+
+running (1m04.3s), 0410/0900 VUs, 4519 complete and 0 interrupted iterations
+steady   [  36% ] 046/100 VUs    1m04.3s/3m0s  50.00 iters/s
+burst    [  86% ] 0364/0800 VUs  4.3s/5s       400.00 iters/s
+
+running (1m05.3s), 0498/0900 VUs, 4768 complete and 0 interrupted iterations
+steady   [  36% ] 064/100 VUs    1m05.3s/3m0s  50.00 iters/s
+burst  ↓ [ 100% ] 0499/0800 VUs  5s            400.00 iters/s
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.110Z refused k6f-C-b-488-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.110Z refused k6f-C-39-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.186Z refused k6f-C-b-826-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.187Z refused k6f-C-b-794-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.190Z refused k6f-C-6-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.190Z refused k6f-C-b-306-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.211Z refused k6f-C-b-251-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.245Z refused k6f-C-11-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.245Z refused k6f-C-b-255-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.245Z refused k6f-C-b-727-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.245Z refused k6f-C-17-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.245Z refused k6f-C-b-304-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.245Z refused k6f-C-15-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.245Z refused k6f-C-b-350-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.246Z refused k6f-C-b-417-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.251Z refused k6f-C-b-421-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.308Z refused k6f-C-b-589-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.312Z refused k6f-C-b-478-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.313Z refused k6f-C-55-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.313Z refused k6f-C-b-511-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.313Z refused k6f-C-b-406-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.314Z refused k6f-C-b-393-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.314Z refused k6f-C-b-405-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.315Z refused k6f-C-56-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.314Z refused k6f-C-57-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.315Z refused k6f-C-1-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.315Z refused k6f-C-b-720-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.315Z refused k6f-C-b-369-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.317Z refused k6f-C-b-784-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.318Z refused k6f-C-b-449-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.318Z refused k6f-C-b-335-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.319Z refused k6f-C-b-749-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.319Z refused k6f-C-b-332-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.320Z refused k6f-C-b-356-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.321Z refused k6f-C-b-250-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.322Z refused k6f-C-b-362-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.607Z refused k6f-C-20-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.630Z refused k6f-C-b-440-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.733Z refused k6f-C-b-770-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.733Z refused k6f-C-b-312-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.733Z refused k6f-C-b-394-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.734Z refused k6f-C-16-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.734Z refused k6f-C-b-261-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.736Z refused k6f-C-b-469-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.736Z refused k6f-C-b-411-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.737Z refused k6f-C-b-402-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.737Z refused k6f-C-13-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.738Z refused k6f-C-b-755-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.745Z refused k6f-C-b-277-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.746Z refused k6f-C-b-447-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.746Z refused k6f-C-b-721-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.749Z refused k6f-C-b-377-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.769Z refused k6f-C-b-776-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.871Z refused k6f-C-35-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.872Z refused k6f-C-b-501-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.872Z refused k6f-C-b-809-1: status 502 from Gateway " source=console
+time="2026-10-25T18:25:54Z" level=warning msg="2026-10-25T18:25:54.872Z refused k6f-C-b-614-2: status 502 from Gateway " source=console
+
+running (1m06.3s), 0289/0900 VUs, 5027 complete and 0 interrupted iterations
+steady   [  37% ] 081/100 VUs    1m06.3s/3m0s  50.00 iters/s
+burst  ↓ [ 100% ] 0499/0800 VUs  5s            400.00 iters/s
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.316Z refused k6f-C-b-494-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.316Z refused k6f-C-54-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.317Z refused k6f-C-19-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.317Z refused k6f-C-b-558-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.519Z refused k6f-C-b-585-2: status 502 from Gateway " source=console
+
+running (1m07.3s), 0286/0913 VUs, 5067 complete and 0 interrupted iterations
+steady   [  37% ] 113/113 VUs    1m07.3s/3m0s  50.00 iters/s
+burst  ↓ [ 100% ] 0499/0800 VUs  5s            400.00 iters/s
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.921Z refused k6f-C-b-410-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.921Z refused k6f-C-b-372-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.993Z refused k6f-C-b-384-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.994Z refused k6f-C-b-155-3: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.994Z refused k6f-C-b-457-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.994Z refused k6f-C-b-387-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.995Z refused k6f-C-b-428-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.995Z refused k6f-C-b-443-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.995Z refused k6f-C-b-283-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.995Z refused k6f-C-29-32: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.996Z refused k6f-C-b-601-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.996Z refused k6f-C-b-149-3: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.997Z refused k6f-C-b-518-2: status 502 from Gateway " source=console
+time="2026-10-25T18:25:55Z" level=warning msg="2026-10-25T18:25:55.997Z refused k6f-C-b-386-2: status 502 from Gateway " source=console
+
+running (1m08.3s), 0095/0919 VUs, 5302 complete and 0 interrupted iterations
+steady   [  38% ] 086/119 VUs    1m08.3s/3m0s  50.00 iters/s
+burst  ↓ [ 100% ] 0499/0800 VUs  5s            400.00 iters/s
+
+running (1m09.3s), 0001/0919 VUs, 5446 complete and 0 interrupted iterations
+steady   [  38% ] 001/119 VUs    1m09.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m10.3s), 0001/0919 VUs, 5496 complete and 0 interrupted iterations
+steady   [  39% ] 001/119 VUs    1m10.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m11.3s), 0001/0919 VUs, 5546 complete and 0 interrupted iterations
+steady   [  40% ] 001/119 VUs    1m11.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m12.3s), 0001/0919 VUs, 5596 complete and 0 interrupted iterations
+steady   [  40% ] 001/119 VUs    1m12.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m13.3s), 0002/0919 VUs, 5645 complete and 0 interrupted iterations
+steady   [  41% ] 002/119 VUs    1m13.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m14.3s), 0001/0919 VUs, 5696 complete and 0 interrupted iterations
+steady   [  41% ] 001/119 VUs    1m14.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m15.3s), 0001/0919 VUs, 5746 complete and 0 interrupted iterations
+steady   [  42% ] 001/119 VUs    1m15.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m16.3s), 0001/0919 VUs, 5796 complete and 0 interrupted iterations
+steady   [  42% ] 001/119 VUs    1m16.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m17.3s), 0001/0919 VUs, 5846 complete and 0 interrupted iterations
+steady   [  43% ] 001/119 VUs    1m17.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m18.3s), 0001/0919 VUs, 5896 complete and 0 interrupted iterations
+steady   [  43% ] 001/119 VUs    1m18.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m19.3s), 0001/0919 VUs, 5946 complete and 0 interrupted iterations
+steady   [  44% ] 001/119 VUs    1m19.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m20.3s), 0001/0919 VUs, 5996 complete and 0 interrupted iterations
+steady   [  45% ] 001/119 VUs    1m20.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m21.3s), 0001/0919 VUs, 6046 complete and 0 interrupted iterations
+steady   [  45% ] 001/119 VUs    1m21.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m22.3s), 0001/0919 VUs, 6096 complete and 0 interrupted iterations
+steady   [  46% ] 001/119 VUs    1m22.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m23.3s), 0001/0919 VUs, 6146 complete and 0 interrupted iterations
+steady   [  46% ] 001/119 VUs    1m23.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m24.3s), 0001/0919 VUs, 6196 complete and 0 interrupted iterations
+steady   [  47% ] 001/119 VUs    1m24.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m25.3s), 0001/0919 VUs, 6246 complete and 0 interrupted iterations
+steady   [  47% ] 001/119 VUs    1m25.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m26.3s), 0001/0919 VUs, 6296 complete and 0 interrupted iterations
+steady   [  48% ] 001/119 VUs    1m26.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m27.3s), 0001/0919 VUs, 6346 complete and 0 interrupted iterations
+steady   [  48% ] 001/119 VUs    1m27.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m28.3s), 0001/0919 VUs, 6396 complete and 0 interrupted iterations
+steady   [  49% ] 001/119 VUs    1m28.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m29.3s), 0001/0919 VUs, 6446 complete and 0 interrupted iterations
+steady   [  50% ] 001/119 VUs    1m29.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m30.3s), 0002/0919 VUs, 6495 complete and 0 interrupted iterations
+steady   [  50% ] 002/119 VUs    1m30.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m31.3s), 0001/0919 VUs, 6546 complete and 0 interrupted iterations
+steady   [  51% ] 001/119 VUs    1m31.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m32.3s), 0001/0919 VUs, 6596 complete and 0 interrupted iterations
+steady   [  51% ] 001/119 VUs    1m32.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m33.3s), 0001/0919 VUs, 6646 complete and 0 interrupted iterations
+steady   [  52% ] 001/119 VUs    1m33.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
+
+running (1m34.3s), 0001/0919 VUs, 6696 complete and 0 interrupted iterations
+steady   [  52% ] 001/119 VUs    1m34.3s/3m0s  50.00 iters/s
+burst  ✓ [ 100% ] 0000/0800 VUs  5s            400.00 iters/s
