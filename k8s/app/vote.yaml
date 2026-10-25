@@ -1,5 +1,7 @@
 # Vote: the page where people vote. Puts each vote into the Redis queue.
-# Two pods on two different nodes, so voting continues if one is replaced or its node fails.
+# Six pods, 2 per node, sized from the spike tests (#9, loadtest/results/spike-*):
+# one pod at its 500m CPU limit answers about 90 votes/s, the spike is 400 votes/s,
+# and it must still fit with one pod missing during an update: (6 - 1) x 90 = 450.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -8,7 +10,7 @@ metadata:
   labels:
     app: vote
 spec:
-  replicas: 2
+  replicas: 6
   selector:
     matchLabels:
       app: vote
