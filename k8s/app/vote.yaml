@@ -1,5 +1,7 @@
 # Vote: the page where people vote. Puts each vote into the Redis queue.
-# Two pods on two different nodes, so voting continues if one is replaced or its node fails.
+# Six pods, 2 per node, sized from the spike tests (#9, loadtest/results/spike-*):
+# one pod at its 500m CPU limit answers about 90 votes/s, the spike is 400 votes/s,
+# and it must still fit with one pod missing during an update: (6 - 1) x 90 = 450.
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -8,7 +10,7 @@ metadata:
   labels:
     app: vote
 spec:
-  replicas: 2
+  replicas: 6
   selector:
     matchLabels:
       app: vote
@@ -17,11 +19,14 @@ spec:
       labels:
         app: vote
     spec:
-      # Never two Vote pods on one node: losing a node never stops voting.
+      # Spread evenly over the nodes (2 per node): losing a node never stops voting.
       topologySpreadConstraints:
         - maxSkew: 1                           # pods per node may differ by at most 1
           topologyKey: kubernetes.io/hostname  # "spread over nodes" (zone would be topology.kubernetes.io/zone)
           whenUnsatisfiable: DoNotSchedule     # rather wait (Pending) than break the rule
+          # Count only pods of the same version. Without it, the old pods still count during a
+          # rolling update and the new ones bunch up: 3 + 2 + 1 after every update (#9, runs N/N2).
+          matchLabelKeys: [pod-template-hash]
           labelSelector:
             matchLabels:
               app: vote

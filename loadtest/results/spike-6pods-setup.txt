@@ -1,0 +1,8 @@
+Vote: 6 replicas, image springlaughing/voting-vote:034d636, readiness probe on "/vote"
+NAME                    READY   STATUS    RESTARTS   AGE    IP           NODE                         NOMINATED NODE   READINESS GATES
+vote-7c68df799f-2sjtm   1/1     Running   0          10s    10.0.1.159   ip-10-0-1-101.ec2.internal   <none>           <none>
+vote-7c68df799f-6xv6r   1/1     Running   0          4m4s   10.0.1.114   ip-10-0-1-249.ec2.internal   <none>           <none>
+vote-7c68df799f-cxwnr   1/1     Running   0          13m    10.0.1.120   ip-10-0-1-101.ec2.internal   <none>           <none>
+vote-7c68df799f-d2wqm   1/1     Running   0          13m    10.0.2.151   ip-10-0-2-23.ec2.internal    <none>           <none>
+vote-7c68df799f-mcmlc   1/1     Running   0          4m4s   10.0.1.170   ip-10-0-1-249.ec2.internal   <none>           <none>
+vote-7c68df799f-wlsgk   1/1     Running   0          10s    10.0.2.92    ip-10-0-2-23.ec2.internal    <none>           <none>

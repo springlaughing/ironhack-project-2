@@ -1,0 +1,7 @@
+
+=== Run A (deployment/vote)
+sent 9001 | accepted (200) 9001 | refused: by Vote 0, by Gateway 0, no answer 0 | not sent by k6 0
+saved in PostgreSQL 9001 | saved minus accepted 0  (negative = accepted votes lost)
+first and last refused vote:
+     http_req_duration..............: avg=139.46ms med=121.89ms p(95)=177.38ms p(99)=562.59ms max=2s      
+     iteration_duration.............: avg=148.09ms med=122.21ms p(95)=208.79ms p(99)=722.44ms max=2.26s   
