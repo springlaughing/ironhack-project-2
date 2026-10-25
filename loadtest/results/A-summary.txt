@@ -1,0 +1,4 @@
+
+=== Run A (deployment/vote)
+saved in PostgreSQL 10935 (burst 1985) | largest Redis queue 307
+k6's numbers (sent, accepted, refused by whom): in CloudShell, ~/A-k6.tgz
