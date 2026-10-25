@@ -1,0 +1,15 @@
+# cert-manager for the voting app (#11): gets a Let's Encrypt certificate for
+# k8s.springlaughing.dev, proving control of the name with a DNS-01 TXT record in Route 53.
+# Installed by setup-cluster.sh:
+#   helm upgrade --install cert-manager jetstack/cert-manager --version v1.21.3 \
+#     -n cert-manager --create-namespace -f k8s/platform/cert-manager-values.yaml
+# AWS access: Pod Identity. The role cert-manager-evgenia (terraform/iam/pod-identity.tf)
+# is linked to the service account below by setup-cluster.sh. No keys in any Secret.
+
+crds:
+  enabled: true          # install cert-manager's own object kinds with the chart:
+                         # Certificate, ClusterIssuer, CertificateRequest, Order, Challenge
+
+serviceAccount:
+  create: true
+  name: cert-manager     # must match the Pod Identity association

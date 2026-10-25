@@ -1,0 +1,17 @@
+# The certificate for the Gateway's HTTPS listener (#11).
+# cert-manager gets it from the issuer below and stores certificate + private key in the
+# Secret voting-tls, in the Gateway's namespace (a listener can only read Secrets there).
+# Platform, not app: it belongs to the Gateway, and the pipeline has no rights on it.
+# Tested first with letsencrypt-staging (25 Oct: issued in under a minute), now production.
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: voting-tls
+  namespace: voting-app
+spec:
+  secretName: voting-tls
+  dnsNames:
+    - k8s.springlaughing.dev
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
