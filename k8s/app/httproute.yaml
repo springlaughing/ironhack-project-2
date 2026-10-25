@@ -6,6 +6,8 @@ kind: HTTPRoute
 metadata:
   name: voting
   namespace: voting-app
+  annotations: 
+    external-dns.kubernetes.io/hostname: k8s.springlaughing.dev   # #11: external-dns writes this name -> the Gateway's NLB
 spec:
   parentRefs:
     - name: voting-gateway         # attach to the Gateway in k8s/platform/gateway.yaml

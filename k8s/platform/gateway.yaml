@@ -16,3 +16,12 @@ spec:
       allowedRoutes:
         namespaces:
           from: Same               # only HTTPRoutes from voting-app may attach
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: k8s.springlaughing.dev        # this listener only answers for my name (SNI)
+      tls:
+        mode: Terminate                       # HTTPS ends at the Gateway; HTTP to the pods behind it
+        certificateRefs:
+          - kind: Secret
+            name: voting-tls                  # written by cert-manager (k8s/platform/certificate.yaml)

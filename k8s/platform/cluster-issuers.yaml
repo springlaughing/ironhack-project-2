@@ -1,0 +1,42 @@
+# Where cert-manager gets certificates from (#11): Let's Encrypt, over ACME.
+# Proof of control of the name: DNS-01, a TXT record _acme-challenge.k8s.springlaughing.dev
+# in my Route 53 zone, written with cert-manager's Pod Identity role (TXT _acme-challenge.* only).
+# Two issuers: staging (test certificates, browsers don't trust them, generous limits)
+# to get everything right first, production (trusted, strict rate limits) after.
+# ClusterIssuer = usable from any namespace. No email: optional, and Let's Encrypt no
+# longer sends expiry mails; cert-manager renews by itself.
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-staging
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-staging-account      # cert-manager creates this: my ACME account key
+    solvers:
+      - selector:
+          dnsZones:
+            - k8s.springlaughing.dev          # use this solver for names in my zone
+        dns01:
+          route53:
+            region: us-east-1
+            hostedZoneID: Z002306215TWO58GOW5TL   # no keys: credentials come from Pod Identity
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-prod-account
+    solvers:
+      - selector:
+          dnsZones:
+            - k8s.springlaughing.dev
+        dns01:
+          route53:
+            region: us-east-1
+            hostedZoneID: Z002306215TWO58GOW5TL
