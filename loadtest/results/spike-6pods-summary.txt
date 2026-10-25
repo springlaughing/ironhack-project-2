@@ -1,0 +1,20 @@
+
+=== Spike 6pods
+saved in PostgreSQL: burst 2001 (k6 sends 2000), warm-up 3000 (k6 sends 3000)
+largest Redis queue (waiting + in progress): 216 votes
+first to last burst vote saved: 5 s
+highest CPU per pod (kubectl top, 500m = Vote's limit):
+  nginx-gateway-nginx-gateway-fabric-746c9cb5fd-t8dp8 135m
+  postgres-b945c85c8-jgd87                      81m
+  redis-65c886958d-qn54v                        80m
+  result-6c68779bc9-6gfdh                       2m
+  vote-7c68df799f-2sjtm                         159m
+  vote-7c68df799f-6xv6r                         100m
+  vote-7c68df799f-cxwnr                         122m
+  vote-7c68df799f-d2wqm                         164m
+  vote-7c68df799f-mcmlc                         109m
+  vote-7c68df799f-wlsgk                         146m
+  worker-0                                      91m
+  worker-1                                      53m
+  worker-2                                      64m
+k6's own numbers: in CloudShell, ~/spike-6pods-k6.txt
