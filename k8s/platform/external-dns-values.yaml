@@ -1,0 +1,35 @@
+# external-dns for the voting app (#11): writes k8s.springlaughing.dev -> the Gateway's NLB
+# into Route 53, and deletes it again when the HTTPRoute goes (teardown.sh).
+# Installed by setup-cluster.sh:
+#   helm upgrade --install external-dns external-dns/external-dns --version 1.23.0 \
+#     -n external-dns --create-namespace -f k8s/platform/external-dns-values.yaml
+# AWS access: Pod Identity. The role external-dns-evgenia (terraform/iam/pod-identity.tf)
+# is linked to the service account below by setup-cluster.sh. No keys, no IRSA annotation.
+
+provider:
+  name: aws
+
+env:
+  - name: AWS_DEFAULT_REGION
+    value: us-east-1
+
+sources:
+  - gateway-httproute          # only HTTPRoutes, not Services or Ingresses
+
+domainFilters:
+  - k8s.springlaughing.dev     # never touch a name outside my zone
+
+extraArgs:
+  - --zone-id-filter=Z002306215TWO58GOW5TL   # and only this zone; the shared account has others
+
+policy: sync                   # create, update AND delete records (upsert-only would never delete)
+registry: txt
+txtOwnerId: eks-evgenia        # TXT ownership marks: it only ever changes records it created
+txtPrefix: "%{record_type}-extdns."   # puts those marks INSIDE my zone (a-extdns.k8s.springlaughing.dev);
+                                      # without it, the apex record's mark would be a-k8s.springlaughing.dev,
+                                      # outside the zone, and was silently dropped
+interval: 1m                   # how often it compares the cluster with Route 53
+
+serviceAccount:
+  create: true
+  name: external-dns           # must match the Pod Identity association
