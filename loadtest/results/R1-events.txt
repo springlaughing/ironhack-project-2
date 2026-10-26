@@ -1,0 +1,5 @@
+10:47:12 run R1: deployment/vote (6 replicas, springlaughing/voting-vote:189ea9c)
+10:47:50 k6 start: first vote saved (50 votes/s for 180s, burst at 60s)
+10:48:52 update start: kubectl rollout restart deployment/vote
+10:49:10 update done
+10:52:22 samplers done

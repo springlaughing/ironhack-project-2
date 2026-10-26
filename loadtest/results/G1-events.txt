@@ -1,0 +1,1 @@
+10:54:16 run G1: blue = deployment/vote (6 replicas, springlaughing/voting-vote:189ea9c)
