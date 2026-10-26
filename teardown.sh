@@ -79,8 +79,14 @@ if [ -n "$LB_DNS" ]; then
   done
 fi
 
-# Later issues add their steps here:
-#   #11 helm uninstall cert-manager (after the namespace; its certificate Secret goes with it)
+# 4. cert-manager (#11). The certificate and its Secret went with the app namespace (step 1).
+#    The ClusterIssuers belong to no namespace: delete them while cert-manager still exists.
+#    Its Route 53 access is only for TXT _acme-challenge records during a renewal; none is
+#    running now, so nothing is left in the zone.
+log "Uninstalling cert-manager"
+kubectl delete -f k8s/platform/cluster-issuers.yaml --ignore-not-found
+helm uninstall cert-manager -n cert-manager --wait 2>/dev/null || echo "  not installed"
+kubectl delete namespace cert-manager --ignore-not-found --wait=true --timeout=2m
 
 # Kept on purpose: the Secrets Manager secret, the Route 53 zone (with its NS and SOA),
 # the IAM roles. The Pod Identity associations belong to the cluster and go with down.sh.
