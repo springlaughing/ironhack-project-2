@@ -19,6 +19,7 @@
 # Everything lands in loadtest/results/BG-*.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+source loadtest/lib-cluster.sh   # spread check, reload count (#9, Monday)
 
 RUN="${1:-BG}"
 NS="voting-app"
@@ -62,6 +63,7 @@ sample_pods() {
 [ "$(selector)" = "vote" ] || { echo "The Service doesn't point at blue (app=vote). Stop."; exit 1; }
 IMG=$(kubectl get deploy vote -n "$NS" -o jsonpath='{.spec.template.spec.containers[0].image}')
 note "run ${RUN}: blue = deployment/vote ($(kubectl get deploy vote -n "$NS" -o jsonpath='{.spec.replicas}') replicas, ${IMG})"
+record_and_check_spread "$OUT/$RUN-spread.txt"   # blue must start from 2 + 2 + 2
 # vote.yaml up to the "---" (the Deployment only, not the Service), renamed, with blue's image
 awk '/^---/{exit} {print}' k8s/app/vote.yaml \
   | sed -e 's/^  name: vote$/  name: vote-green/' \
@@ -80,6 +82,7 @@ echo "  cd ~/ironhack-project-2 && git pull -q && k6 run --out csv=\$HOME/${RUN}
 echo
 echo "Waiting for the first vote of run ${RUN} ..."
 until [ "$(sql "SELECT COUNT(*) FROM votes WHERE id LIKE 'k6f-${RUN}-%'")" -gt 0 ]; do sleep 0.5; done
+START=$(date -u +%Y-%m-%dT%H:%M:%SZ)   # for the reload count
 note "k6 start: first vote saved (${RATE} votes/s for ${DURATION}, burst at ${BURST_AT:-none})"
 
 # 4. samplers
@@ -107,10 +110,11 @@ note "samplers done"
 SAVED=$(sql "SELECT COUNT(*) FROM votes WHERE id LIKE 'k6f-${RUN}-%'")
 SAVED_BURST=$(sql "SELECT COUNT(*) FROM votes WHERE id LIKE 'k6f-${RUN}-b-%'")
 MAXQ=$(awk -F, 'NR > 1 && $2 + $3 > m {m = $2 + $3} END {print m + 0}' "$OUT/$RUN-queue.csv")
+RELOADS=$(count_reloads "$START" "$OUT/$RUN-reloads.txt")
 {
   echo
   echo "=== Run ${RUN} (blue-green, switch at ${SWITCH_AFTER} s)"
-  echo "saved in PostgreSQL ${SAVED} (burst ${SAVED_BURST}) | largest Redis queue ${MAXQ}"
+  echo "saved in PostgreSQL ${SAVED} (burst ${SAVED_BURST}) | largest Redis queue ${MAXQ} | NGINX reloads ${RELOADS} (the switch)"
   echo "k6's numbers (sent, accepted, refused by whom): in CloudShell, ~/${RUN}-k6.tgz"
 } | tee "$OUT/$RUN-summary.txt"
 

@@ -21,6 +21,7 @@
 # Everything lands in loadtest/results/<RUN>-*.
 set -euo pipefail
 cd "$(dirname "$0")/.."
+source loadtest/lib-cluster.sh   # spread check, reload count (#9, Monday)
 
 RUN="${1:?usage: rollout-test.sh <run letter> <workload, e.g. deployment/vote>}"
 WORKLOAD="${2:?usage: rollout-test.sh <run letter> <workload, e.g. deployment/vote>}"
@@ -55,6 +56,8 @@ sample_pods() {
 }
 
 note "run ${RUN}: ${WORKLOAD} ($(kubectl get "$WORKLOAD" -n "$NS" -o jsonpath='{.spec.replicas} replicas, {.spec.template.spec.containers[0].image}'))"
+# Vote must start from an even spread (2 + 2 + 2), so every run starts from the same placement
+[ "$APP" = "vote" ] && record_and_check_spread "$OUT/$RUN-spread.txt"
 sql "DELETE FROM votes WHERE id LIKE 'k6f-${RUN}-%'" > /dev/null
 
 if [ "$K6_WHERE" = "cloudshell" ]; then
@@ -80,6 +83,7 @@ else
   K6_PID=$!
 fi
 
+START=$(date -u +%Y-%m-%dT%H:%M:%SZ)   # for the reload count
 # the samplers, from k6's start on
 kubectl exec -i -n "$NS" deploy/redis -- sh -s "$SAMPLE_SECONDS" \
   < loadtest/sample-queue.sh > "$OUT/$RUN-queue.csv" &
@@ -96,6 +100,7 @@ kubectl rollout restart "$WORKLOAD" -n "$NS"
 kubectl rollout status "$WORKLOAD" -n "$NS" --timeout=5m
 note "update done"
 kubectl get pods -n "$NS" -l "app=${APP}" -o wide
+[ "$APP" = "vote" ] && { wait_no_terminating; vote_spread | tee "$OUT/$RUN-spread-after.txt"; }
 
 if [ "$K6_WHERE" != "cloudshell" ]; then
   wait "$K6_PID" || true
@@ -108,10 +113,11 @@ note "samplers done"
 SAVED=$(sql "SELECT COUNT(*) FROM votes WHERE id LIKE 'k6f-${RUN}-%'")
 SAVED_BURST=$(sql "SELECT COUNT(*) FROM votes WHERE id LIKE 'k6f-${RUN}-b-%'")
 MAXQ=$(awk -F, 'NR > 1 && $2 + $3 > m {m = $2 + $3} END {print m + 0}' "$OUT/$RUN-queue.csv")
+RELOADS=$(count_reloads "$START" "$OUT/$RUN-reloads.txt")
 {
   echo
   echo "=== Run ${RUN} (${WORKLOAD})"
-  echo "saved in PostgreSQL ${SAVED} (burst ${SAVED_BURST}) | largest Redis queue ${MAXQ}"
+  echo "saved in PostgreSQL ${SAVED} (burst ${SAVED_BURST}) | largest Redis queue ${MAXQ} | NGINX reloads ${RELOADS}"
   if [ "$K6_WHERE" = "cloudshell" ]; then
     echo "k6's numbers (sent, accepted, refused by whom): in CloudShell, ~/${RUN}-k6.tgz"
   else
