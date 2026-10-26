@@ -1,0 +1,12 @@
+Vote pods per node:
+  ip-10-0-1-182.ec2.internal 2
+  ip-10-0-1-76.ec2.internal 2
+  ip-10-0-2-245.ec2.internal 2
+Other pods:
+  postgres-b945c85c8-f6ztf ip-10-0-1-76.ec2.internal
+  redis-65c886958d-md87d ip-10-0-2-245.ec2.internal
+  result-68c7f9948b-99jdw ip-10-0-1-182.ec2.internal
+  worker-0 ip-10-0-2-245.ec2.internal
+  worker-1 ip-10-0-1-182.ec2.internal
+  worker-2 ip-10-0-1-76.ec2.internal
+  nginx-gateway-nginx-gateway-fabric-746c9cb5fd-z8vxw ip-10-0-1-76.ec2.internal

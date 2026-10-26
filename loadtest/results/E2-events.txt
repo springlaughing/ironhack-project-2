@@ -1,0 +1,3 @@
+12:39:25 run E2: no update, 6 Vote replicas, springlaughing/voting-vote:2d0dfe4
+12:40:26 k6 start: first vote saved (50 votes/s for 180s, burst at 60s)
+12:44:34 samplers done

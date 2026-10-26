@@ -1,0 +1,8 @@
+
+=== Run E2 (no update)
+saved in PostgreSQL 11002 (burst 2001) | largest Redis queue 105 | NGINX reloads 0
+Vote pods per node, and the most CPU the node used in one second (of its CPUs; steal = CPU the hypervisor held back):
+  ip-10-0-1-182   2 Vote pods   max 1.38 of 2 CPUs at 12:41:32 (steal 0.01)
+  ip-10-0-1-76    2 Vote pods   max 1.94 of 2 CPUs at 12:41:30 (steal 0.00)
+  ip-10-0-2-245   2 Vote pods   max 1.80 of 2 CPUs at 12:41:32 (steal 0.00)
+k6's numbers (sent, accepted, refused, answer times): in CloudShell, ~/E2-k6.tgz
