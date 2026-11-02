@@ -1,0 +1,11 @@
+NAMESPACE     NAME                        READY   STATUS    RESTARTS      AGE     IP              NODE                             NOMINATED NODE   READINESS GATES
+kube-system   azure-cns-4xlld             2/2     Running   2 (45m ago)   8h      10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system   azure-ip-masq-agent-7x8gt   1/1     Running   1 (45m ago)   8h      10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system   cloud-node-manager-5cnsm    1/1     Running   1 (45m ago)   8h      10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system   coredns-76df789c68-sjn24    1/1     Running   0             2m54s   192.168.1.113   aks-system-19447125-vmss000000   <none>           <none>
+kube-system   csi-azuredisk-node-967tl    3/3     Running   3 (45m ago)   8h      10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system   csi-azurefile-node-c5cdl    4/4     Running   4 (45m ago)   8h      10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system   kube-proxy-mwmxh            1/1     Running   1 (45m ago)   8h      10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+voting-app    postgres-758d7567d6-qs8w4   1/1     Running   0             5m38s   192.168.1.134   aks-system-19447125-vmss000000   <none>           <none>
+voting-app    vote-7b988b5dbc-lqt7h       1/1     Running   0             5m39s   192.168.1.132   aks-system-19447125-vmss000000   <none>           <none>
+voting-app    vote-7b988b5dbc-nrkt5       1/1     Running   0             5m37s   192.168.1.150   aks-system-19447125-vmss000000   <none>           <none>

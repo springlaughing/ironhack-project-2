@@ -1,0 +1,10 @@
+22:40:54 run N2: PostgreSQL on aks-system-19447125-vmss000000 (germanywestcentral-2) = aks-system-19447125-vmss instance 0
+22:41:00 k6 start: 20 votes/s for 1200s to https://vote.aks.springlaughing.dev/
+22:42:01 FAIL: az vmss deallocate aks-system-19447125-vmss instance 0 (aks-system-19447125-vmss000000, germanywestcentral-2)
+22:42:03 deallocate requested
+22:43:08 node aks-system-19447125-vmss000000 NotReady
+22:43:42 PostgreSQL ready again: postgres-758d7567d6-hkvpl on aks-system-19447125-vmss000002 (germanywestcentral-1)
+23:01:07 k6 done
+23:01:18 queue empty
+23:01:23 az vmss start aks-system-19447125-vmss instance 0
+23:02:34 node aks-system-19447125-vmss000000 Ready again

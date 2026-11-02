@@ -1,0 +1,3 @@
+PV                                         CLAIM
+pvc-7ad6c5bf-c707-4434-b8a6-208d4ec5fd88   db-data
+pvc-a0c76395-bae8-4488-acd7-60c12802aa32   redis-data

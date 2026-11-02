@@ -1,0 +1,193 @@
+22:42:14 NS           REASON      OBJECT                  MESSAGE
+22:42:14 voting-app   Unhealthy   vote-7b988b5dbc-585qq   Readiness probe failed: Get "http://192.168.2.114:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:16 voting-app   Unhealthy   vote-7b988b5dbc-v2lh8   Readiness probe failed: Get "http://192.168.2.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:17 voting-app   Unhealthy   vote-7b988b5dbc-njtm7   Readiness probe failed: Get "http://192.168.0.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:19 voting-app   Unhealthy   vote-7b988b5dbc-585qq   Readiness probe failed: Get "http://192.168.2.114:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:21 voting-app   Unhealthy   vote-7b988b5dbc-v2lh8   Readiness probe failed: Get "http://192.168.2.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:22 voting-app   Unhealthy   vote-7b988b5dbc-njtm7   Readiness probe failed: Get "http://192.168.0.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:24 voting-app   Unhealthy   vote-7b988b5dbc-585qq   Readiness probe failed: Get "http://192.168.2.114:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:24 voting-app   Unhealthy   vote-7b988b5dbc-g5mrm   Readiness probe failed: Get "http://192.168.0.100:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:26 voting-app   Unhealthy   vote-7b988b5dbc-v2lh8   Readiness probe failed: Get "http://192.168.2.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:27 voting-app   Unhealthy   vote-7b988b5dbc-585qq   Readiness probe failed: Get "http://192.168.2.114:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:27 voting-app   Unhealthy   vote-7b988b5dbc-njtm7   Readiness probe failed: Get "http://192.168.0.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:29 voting-app   Unhealthy   vote-7b988b5dbc-v2lh8   Readiness probe failed: Get "http://192.168.2.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:29 voting-app   Unhealthy   vote-7b988b5dbc-g5mrm   Readiness probe failed: Get "http://192.168.0.100:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:32 cert-manager   Pulled      cert-manager-cainjector-7c84589448-t8jsr   Successfully pulled image "quay.io/jetstack/cert-manager-cainjector:v1.21.3" in 2.154s (2.154s including waiting). Image size: 12481729 bytes.
+22:42:32 cert-manager   Started     cert-manager-cainjector-7c84589448-t8jsr   Container started
+22:42:32 voting-app     Scheduled   postgres-b945c85c8-ppvtb                   Successfully assigned voting-app/postgres-b945c85c8-ppvtb to aks-system-19447125-vmss000002
+22:42:32 voting-app     SuccessfulCreate   postgres-b945c85c8                         Created pod: postgres-b945c85c8-ppvtb
+22:42:32 voting-app     SuccessfulCreate   vote-c8f767c54                             Created pod: vote-c8f767c54-4sbjl
+22:42:32 voting-app     SuccessfulCreate   vote-c8f767c54                             Created pod: vote-c8f767c54-95lkm
+22:42:32 cert-manager   Scheduled          cert-manager-cainjector-7c84589448-t8jsr   Successfully assigned cert-manager/cert-manager-cainjector-7c84589448-t8jsr to aks-system-19447125-vmss000001
+22:42:32 cert-manager   Pulling            cert-manager-cainjector-7c84589448-t8jsr   Pulling image "quay.io/jetstack/cert-manager-cainjector:v1.21.3"
+22:42:32 cert-manager   Created            cert-manager-cainjector-7c84589448-t8jsr   Container created
+22:42:32 cert-manager   SuccessfulCreate   cert-manager-cainjector-7c84589448         Created pod: cert-manager-cainjector-7c84589448-t8jsr
+22:42:32 kube-system    LeaderElection     cert-manager-cainjector-leader-election    cert-manager-cainjector-7c84589448-t8jsr_102bbc77-a067-4c3b-941a-7560e2b5dfe7 became leader
+22:42:32 voting-app     FailedAttachVolume   postgres-b945c85c8-ppvtb                   Waiting for detach for volume "pvc-7ad6c5bf-c707-4434-b8a6-208d4ec5fd88" Volume is already used by pod(s) postgres-b945c85c8-wvwc6
+22:42:34 voting-app     Unhealthy            vote-7b988b5dbc-v2lh8                      Readiness probe failed: Get "http://192.168.2.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:34 default        NodeRebootStart      aks-system-19447125-vmss000000             Node remediation is initiating a reboot action due to NotReady status persisting >5 minutes. Learn more: aka.ms/aks/node-auto-repair
+22:42:34 default        NodeRebootEnd        aks-system-19447125-vmss000000             Reboot action from node auto-repair has completed. Learn more: aka.ms/aks/node-auto-repair
+22:42:34 default        NodeRebootError      aks-system-19447125-vmss000000             Node auto-repair reboot action failed due to an operation failure. Learn more: aka.ms/aks/node-auto-repair-errors
+22:42:40 voting-app     Unhealthy            vote-7b988b5dbc-njtm7                      Readiness probe failed: Get "http://192.168.0.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:44 voting-app     Unhealthy            vote-7b988b5dbc-v2lh8                      Readiness probe failed: Get "http://192.168.2.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:45 voting-app     Unhealthy            vote-7b988b5dbc-njtm7                      Readiness probe failed: Get "http://192.168.0.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:49 voting-app     Unhealthy            vote-7b988b5dbc-v2lh8                      Readiness probe failed: Get "http://192.168.2.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:50 voting-app     Unhealthy            vote-7b988b5dbc-njtm7                      Readiness probe failed: Get "http://192.168.0.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:52 voting-app     Unhealthy            vote-7b988b5dbc-585qq                      Readiness probe failed: Get "http://192.168.2.114:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:54 voting-app     Unhealthy            vote-7b988b5dbc-v2lh8                      Readiness probe failed: Get "http://192.168.2.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:54 voting-app     Unhealthy            vote-7b988b5dbc-g5mrm                      Readiness probe failed: Get "http://192.168.0.100:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:57 voting-app     Unhealthy            vote-7b988b5dbc-585qq                      Readiness probe failed: Get "http://192.168.2.114:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:57 voting-app     Unhealthy            vote-7b988b5dbc-v2lh8                      Readiness probe failed: Get "http://192.168.2.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:42:58 voting-app     Unhealthy            vote-7b988b5dbc-njtm7                      Readiness probe failed: Get "http://192.168.0.36:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:43:02 voting-app     Unhealthy            vote-7b988b5dbc-585qq                      Readiness probe failed: Get "http://192.168.2.114:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:43:04 voting-app     Unhealthy            vote-7b988b5dbc-g5mrm                      Readiness probe failed: Get "http://192.168.0.100:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:43:05 voting-app     Unhealthy            vote-7b988b5dbc-585qq                      Readiness probe failed: Get "http://192.168.2.114:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+22:43:08 default        NodeNotReady         aks-system-19447125-vmss000000             Node aks-system-19447125-vmss000000 status is now: NodeNotReady
+22:43:08 kube-system    NodeNotReady         azure-ip-masq-agent-7x8gt                  Node is not ready
+22:43:08 kube-system    NodeNotReady         cloud-node-manager-5cnsm                   Node is not ready
+22:43:08 kube-system    NodeNotReady         csi-azurefile-node-c5cdl                   Node is not ready
+22:43:08 voting-app     NodeNotReady         postgres-758d7567d6-qs8w4                  Node is not ready
+22:43:08 voting-app     NodeNotReady         vote-7b988b5dbc-lqt7h                      Node is not ready
+22:43:08 voting-app     NodeNotReady         vote-7b988b5dbc-nrkt5                      Node is not ready
+22:43:08 kube-system    NodeNotReady         coredns-76df789c68-sjn24                   Node is not ready
+22:43:08 kube-system    NodeNotReady         csi-azuredisk-node-967tl                   Node is not ready
+22:43:08 kube-system    NodeNotReady         kube-proxy-mwmxh                           Node is not ready
+22:43:08 kube-system    NodeNotReady         azure-cns-4xlld                            Node is not ready
+22:43:09 voting-app     TaintManagerEviction   vote-7b988b5dbc-lqt7h                      Cancelling deletion of Pod voting-app/vote-7b988b5dbc-lqt7h
+22:43:09 voting-app     TaintManagerEviction   vote-7b988b5dbc-nrkt5                      Cancelling deletion of Pod voting-app/vote-7b988b5dbc-nrkt5
+22:43:09 kube-system    TaintManagerEviction   coredns-76df789c68-sjn24                   Cancelling deletion of Pod kube-system/coredns-76df789c68-sjn24
+22:43:09 voting-app     TaintManagerEviction   vote-7b988b5dbc-lqt7h                      Marking for deletion Pod voting-app/vote-7b988b5dbc-lqt7h
+22:43:09 kube-system    TaintManagerEviction   coredns-76df789c68-sjn24                   Marking for deletion Pod kube-system/coredns-76df789c68-sjn24
+22:43:09 voting-app     TaintManagerEviction   vote-7b988b5dbc-nrkt5                      Marking for deletion Pod voting-app/vote-7b988b5dbc-nrkt5
+22:43:09 voting-app     TaintManagerEviction   postgres-758d7567d6-qs8w4                  Cancelling deletion of Pod voting-app/postgres-758d7567d6-qs8w4
+22:43:09 voting-app     TaintManagerEviction   postgres-758d7567d6-qs8w4                  Marking for deletion Pod voting-app/postgres-758d7567d6-qs8w4
+22:43:10 voting-app     SuccessfulCreate       postgres-758d7567d6                        Created pod: postgres-758d7567d6-hkvpl
+22:43:10 voting-app     SuccessfulCreate       vote-7b988b5dbc                            Created pod: vote-7b988b5dbc-6zspk
+22:43:10 voting-app     Scheduled              vote-7b988b5dbc-6zspk                      Successfully assigned voting-app/vote-7b988b5dbc-6zspk to aks-system-19447125-vmss000002
+22:43:10 voting-app     Scheduled              postgres-758d7567d6-hkvpl                  Successfully assigned voting-app/postgres-758d7567d6-hkvpl to aks-system-19447125-vmss000002
+22:43:10 voting-app     FailedAttachVolume     postgres-758d7567d6-hkvpl                  Waiting for detach for volume "pvc-7ad6c5bf-c707-4434-b8a6-208d4ec5fd88" Volume is already used by pod(s) postgres-758d7567d6-qs8w4
+22:43:10 voting-app     SuccessfulCreate       vote-7b988b5dbc                            Created pod: vote-7b988b5dbc-hvk8k
+22:43:10 voting-app     Scheduled              vote-7b988b5dbc-hvk8k                      Successfully assigned voting-app/vote-7b988b5dbc-hvk8k to aks-system-19447125-vmss000001
+22:43:10 kube-system    SuccessfulCreate       coredns-76df789c68                         Created pod: coredns-76df789c68-9dt6v
+22:43:10 kube-system    Scheduled              coredns-76df789c68-9dt6v                   Successfully assigned kube-system/coredns-76df789c68-9dt6v to aks-system-19447125-vmss000002
+22:43:10 voting-app     Pulled                 vote-7b988b5dbc-hvk8k                      Container image "springlaughing/voting-vote:e0035c5" already present on machine and can be accessed by the pod
+22:43:10 voting-app     Pulled                 vote-7b988b5dbc-6zspk                      Container image "springlaughing/voting-vote:e0035c5" already present on machine and can be accessed by the pod
+22:43:10 voting-app     Created                vote-7b988b5dbc-hvk8k                      Container created
+22:43:10 voting-app     Created                vote-7b988b5dbc-6zspk                      Container created
+22:43:10 voting-app     Started                vote-7b988b5dbc-hvk8k                      Container started
+22:43:10 voting-app     Unhealthy              vote-7b988b5dbc-hvk8k                      Readiness probe failed: Get "http://192.168.0.15:80/vote": dial tcp 192.168.0.15:80: connect: connection refused
+22:43:10 kube-system    Pulled                 coredns-76df789c68-9dt6v                   Container image "mcr.microsoft.com/oss/v2/kubernetes/coredns:v1.14.3-21" already present on machine and can be accessed by the pod
+22:43:10 voting-app     Started                vote-7b988b5dbc-6zspk                      Container started
+22:43:10 voting-app     Unhealthy              vote-7b988b5dbc-6zspk                      Readiness probe failed: Get "http://192.168.2.69:80/vote": dial tcp 192.168.2.69:80: connect: connection refused
+22:43:10 kube-system    Created                coredns-76df789c68-9dt6v                   Container created
+22:43:10 kube-system    Started                coredns-76df789c68-9dt6v                   Container started
+22:43:10 kube-system    Unhealthy              coredns-76df789c68-9dt6v                   Readiness probe failed: Get "http://192.168.2.140:8181/ready": dial tcp 192.168.2.140:8181: connect: connection refused
+22:43:33 voting-app     SuccessfulAttachVolume   postgres-758d7567d6-hkvpl                  AttachVolume.Attach succeeded for volume "pvc-7ad6c5bf-c707-4434-b8a6-208d4ec5fd88" 
+22:43:34 voting-app     Pulled                   postgres-758d7567d6-hkvpl                  Container image "postgres:15-alpine" already present on machine and can be accessed by the pod
+22:43:34 voting-app     Created                  postgres-758d7567d6-hkvpl                  Container created
+22:43:34 voting-app     Started                  postgres-758d7567d6-hkvpl                  Container started
+22:43:34 voting-app     Unhealthy                postgres-758d7567d6-hkvpl                  Readiness probe failed: /var/run/postgresql:5432 - no response
+22:43:34 
+22:43:34 voting-app     Unhealthy                postgres-758d7567d6-hkvpl                  Readiness probe failed: /var/run/postgresql:5432 - rejecting connections
+22:43:34 
+22:47:38 kube-system    TaintManagerEviction     coredns-76df789c68-lgt5k                   Marking for deletion Pod kube-system/coredns-76df789c68-lgt5k
+22:47:38 kube-system    TaintManagerEviction     metrics-server-866c8cb87d-vw24h            Marking for deletion Pod kube-system/metrics-server-866c8cb87d-vw24h
+22:47:38 voting-app     Pulling                  postgres-b945c85c8-ppvtb                   Pulling image "postgres:15-alpine"
+22:47:38 voting-app     Pulled                   postgres-b945c85c8-ppvtb                   Successfully pulled image "postgres:15-alpine" in 9.514s (9.514s including waiting). Image size: 115263617 bytes.
+22:47:38 voting-app     Started                  postgres-b945c85c8-ppvtb                   Container started
+22:47:38 voting-app     TaintManagerEviction     postgres-b945c85c8-wvwc6                   Marking for deletion Pod voting-app/postgres-b945c85c8-wvwc6
+22:47:38 voting-app     TaintManagerEviction     vote-c8f767c54-tx89k                       Marking for deletion Pod voting-app/vote-c8f767c54-tx89k
+22:47:38 voting-app     TaintManagerEviction     worker-0                                   Marking for deletion Pod voting-app/worker-0
+22:47:38 voting-app     Scheduled                worker-0                                   Successfully assigned voting-app/worker-0 to aks-system-19447125-vmss000002
+22:47:38 voting-app     Created                  worker-0                                   Container created
+22:47:38 voting-app     SuccessfulCreate         worker                                     Create Pod worker-0 in StatefulSet worker successful
+22:47:38 cert-manager   TaintManagerEviction     cert-manager-cainjector-7c84589448-l9fnc   Marking for deletion Pod cert-manager/cert-manager-cainjector-7c84589448-l9fnc
+22:47:38 kube-system    TaintManagerEviction     konnectivity-agent-75569c8547-vtq8l        Marking for deletion Pod kube-system/konnectivity-agent-75569c8547-vtq8l
+22:47:38 voting-app     SuccessfulAttachVolume   postgres-b945c85c8-ppvtb                   AttachVolume.Attach succeeded for volume "pvc-7ad6c5bf-c707-4434-b8a6-208d4ec5fd88" 
+22:47:38 voting-app     Created                  postgres-b945c85c8-ppvtb                   Container created
+22:47:38 voting-app     Unhealthy                postgres-b945c85c8-ppvtb                   Readiness probe failed: /var/run/postgresql:5432 - no response
+22:47:38 
+22:47:38 voting-app     TaintManagerEviction     vote-c8f767c54-46mh2                       Marking for deletion Pod voting-app/vote-c8f767c54-46mh2
+22:47:38 voting-app     Pulled                   worker-0                                   Container image "springlaughing/voting-worker:076c2f6" already present on machine and can be accessed by the pod
+22:47:38 voting-app     Started                  worker-0                                   Container started
+22:56:34 default        NodeAllocatableEnforced   aks-system-19447125-vmss000000             Updated Node Allocatable limit across pods
+22:56:34 default        Rebooted                  aks-system-19447125-vmss000000             Node aks-system-19447125-vmss000000 has been rebooted, boot id: 00769d37-e05f-48ac-9d61-626448135881
+22:56:34 default        NodeHasSufficientPID      aks-system-19447125-vmss000000             Node aks-system-19447125-vmss000000 status is now: NodeHasSufficientPID
+22:56:34 default        NodeReady                 aks-system-19447125-vmss000000             Node aks-system-19447125-vmss000000 status is now: NodeReady
+22:56:34 default        CoreDNSUnreachable        aks-system-19447125-vmss000000             dns test to coredns:172.16.0.10 over udp failed after 2 attempts
+22:56:34 kube-system    Pulled                    azure-cns-4xlld                            Container image "mcr.microsoft.com/containernetworking/v2/azure-cni:v1.8.15-4" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Started                   azure-cns-4xlld                            Container started
+22:56:34 kube-system    Started                   azure-cns-4xlld                            Container started
+22:56:34 kube-system    Pulled                    azure-cns-4xlld                            Container image "mcr.microsoft.com/containernetworking/v2/azure-cns:v1.8.15-4" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Pulled                    azure-cns-4xlld                            Container image "mcr.microsoft.com/azurelinux/distroless/base:3.0" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Started                   azure-cns-4xlld                            Container started
+22:56:34 kube-system    Pulled                    azure-ip-masq-agent-7x8gt                  Container image "mcr.microsoft.com/oss/v2/azure/ip-masq-agent-v2:v0.1.16-22" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Started                   azure-ip-masq-agent-7x8gt                  Container started
+22:56:34 kube-system    Pulled                    cloud-node-manager-5cnsm                   Container image "mcr.microsoft.com/oss/v2/kubernetes/azure-cloud-node-manager:v1.36.8-2" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Created                   cloud-node-manager-5cnsm                   Container created
+22:56:34 kube-system    SandboxChanged            csi-azuredisk-node-967tl                   Pod sandbox changed, it will be killed and re-created.
+22:56:34 kube-system    Created                   csi-azuredisk-node-967tl                   Container created
+22:56:34 kube-system    Started                   csi-azuredisk-node-967tl                   Container started
+22:56:34 kube-system    Created                   csi-azuredisk-node-967tl                   Container created
+22:56:34 kube-system    Started                   csi-azuredisk-node-967tl                   Container started
+22:56:34 kube-system    Created                   csi-azuredisk-node-967tl                   Container created
+22:56:34 kube-system    SandboxChanged            csi-azurefile-node-c5cdl                   Pod sandbox changed, it will be killed and re-created.
+22:56:34 kube-system    Pulled                    csi-azurefile-node-c5cdl                   Container image "mcr.microsoft.com/oss/v2/kubernetes-csi/azurefile-csi:v1.35.11-6" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Created                   csi-azurefile-node-c5cdl                   Container created
+22:56:34 kube-system    Pulled                    csi-azurefile-node-c5cdl                   Container image "mcr.microsoft.com/oss/v2/kubernetes-csi/livenessprobe:v2.19.0-15" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Created                   csi-azurefile-node-c5cdl                   Container created
+22:56:34 kube-system    Started                   csi-azurefile-node-c5cdl                   Container started
+22:56:34 kube-system    Created                   csi-azurefile-node-c5cdl                   Container created
+22:56:34 kube-system    Pulled                    csi-azurefile-node-c5cdl                   Container image "mcr.microsoft.com/oss/v2/kubernetes-csi/azurefile-csi:v1.35.11-6" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Created                   csi-azurefile-node-c5cdl                   Container created
+22:56:34 kube-system    Started                   csi-azurefile-node-c5cdl                   Container started
+22:56:34 kube-system    SandboxChanged            kube-proxy-mwmxh                           Pod sandbox changed, it will be killed and re-created.
+22:56:34 kube-system    Started                   kube-proxy-mwmxh                           Container started
+22:56:34 kube-system    Started                   kube-proxy-mwmxh                           Container started
+22:56:34 voting-app     FailedCreatePodSandBox    vote-c8f767c54-4sbjl                       Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "3412b908db6bd5622e5eee44e6257deb7849c6bda8a42e06bb6a6fafe63244be": plugin type="azure-vnet" failed (add): netplugin failed with no error message: exec: already started
+22:56:34 voting-app     FailedCreatePodSandBox    vote-c8f767c54-4sbjl                       Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "a4f25bb83967c12630f0ebca2d8f3aed0dd8f1dbcfaf85388b870bae602c6c8a": plugin type="azure-vnet" failed (add): IPAM Invoker Add failed with error: failed to add ipam invoker: Failed to get IP address from CNS: http request failed: Post "http://localhost:10090/network/requestipconfigs": dial tcp 127.0.0.1:10090: connect: connection refused
+22:56:34 voting-app     Started                   vote-c8f767c54-4sbjl                       Container started
+22:56:34 voting-app     FailedScheduling          vote-c8f767c54-95lkm                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+22:56:34 voting-app     Scheduled                 vote-c8f767c54-95lkm                       Successfully assigned voting-app/vote-c8f767c54-95lkm to aks-system-19447125-vmss000000
+22:56:34 voting-app     Created                   vote-c8f767c54-95lkm                       Container created
+22:56:34 default        Starting                  aks-system-19447125-vmss000000             Starting kubelet.
+22:56:34 default        NodeHasSufficientMemory   aks-system-19447125-vmss000000             Node aks-system-19447125-vmss000000 status is now: NodeHasSufficientMemory
+22:56:34 default        NodeHasNoDiskPressure     aks-system-19447125-vmss000000             Node aks-system-19447125-vmss000000 status is now: NodeHasNoDiskPressure
+22:56:34 kube-system    SandboxChanged            azure-cns-4xlld                            Pod sandbox changed, it will be killed and re-created.
+22:56:34 kube-system    Created                   azure-cns-4xlld                            Container created
+22:56:34 kube-system    Pulled                    azure-cns-4xlld                            Container image "mcr.microsoft.com/containernetworking/v2/azure-cni:v1.8.15-4" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Created                   azure-cns-4xlld                            Container created
+22:56:34 kube-system    Created                   azure-cns-4xlld                            Container created
+22:56:34 kube-system    Started                   azure-cns-4xlld                            Container started
+22:56:34 kube-system    Created                   azure-cns-4xlld                            Container created
+22:56:34 kube-system    Unhealthy                 azure-cns-4xlld                            Readiness probe failed: HTTP probe failed with statuscode: 500
+22:56:34 kube-system    SandboxChanged            azure-ip-masq-agent-7x8gt                  Pod sandbox changed, it will be killed and re-created.
+22:56:34 kube-system    Created                   azure-ip-masq-agent-7x8gt                  Container created
+22:56:34 kube-system    SandboxChanged            cloud-node-manager-5cnsm                   Pod sandbox changed, it will be killed and re-created.
+22:56:34 kube-system    Started                   cloud-node-manager-5cnsm                   Container started
+22:56:34 kube-system    Pulled                    csi-azuredisk-node-967tl                   Container image "mcr.microsoft.com/oss/v2/kubernetes-csi/livenessprobe:v2.19.0-15" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Pulled                    csi-azuredisk-node-967tl                   Container image "mcr.microsoft.com/oss/v2/kubernetes-csi/csi-node-driver-registrar:v2.17.0-15" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Pulled                    csi-azuredisk-node-967tl                   Container image "mcr.microsoft.com/oss/v2/kubernetes-csi/azuredisk-csi:v1.34.7-7" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Started                   csi-azuredisk-node-967tl                   Container started
+22:56:34 kube-system    Pulled                    csi-azurefile-node-c5cdl                   Container image "mcr.microsoft.com/oss/v2/kubernetes-csi/azurefile-csi:v1.35.11-6" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Created                   csi-azurefile-node-c5cdl                   Container created
+22:56:34 kube-system    Started                   csi-azurefile-node-c5cdl                   Container started
+22:56:34 kube-system    Started                   csi-azurefile-node-c5cdl                   Container started
+22:56:34 kube-system    Pulled                    csi-azurefile-node-c5cdl                   Container image "mcr.microsoft.com/oss/v2/kubernetes-csi/csi-node-driver-registrar:v2.17.0-15" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Started                   csi-azurefile-node-c5cdl                   Container started
+22:56:34 kube-system    Pulled                    kube-proxy-mwmxh                           Container image "mcr.microsoft.com/oss/v2/kubernetes/kube-proxy:v1.36.5-1" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Created                   kube-proxy-mwmxh                           Container created
+22:56:34 kube-system    Pulled                    kube-proxy-mwmxh                           Container image "mcr.microsoft.com/oss/v2/kubernetes/kube-proxy:v1.36.5-1" already present on machine and can be accessed by the pod
+22:56:34 kube-system    Created                   kube-proxy-mwmxh                           Container created
+22:56:34 voting-app     FailedScheduling          vote-c8f767c54-4sbjl                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+22:56:34 voting-app     Scheduled                 vote-c8f767c54-4sbjl                       Successfully assigned voting-app/vote-c8f767c54-4sbjl to aks-system-19447125-vmss000000
+22:56:34 voting-app     Pulled                    vote-c8f767c54-4sbjl                       Container image "springlaughing/voting-vote:e0035c5" already present on machine and can be accessed by the pod
+22:56:34 voting-app     Created                   vote-c8f767c54-4sbjl                       Container created
+22:56:34 voting-app     FailedCreatePodSandBox    vote-c8f767c54-95lkm                       Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "86ebafc81ff1b08370de14422bbfd305190528907a2532324db44ebfc6dc5513": plugin type="azure-vnet" failed (add): netplugin failed with no error message: exec: already started
+22:56:34 voting-app     FailedCreatePodSandBox    vote-c8f767c54-95lkm                       Failed to create pod sandbox: rpc error: code = Unknown desc = failed to setup network for sandbox "15327f7e9b778128766ba35722dfb8313fc7331971d318127a49e957b89d8b3b": plugin type="azure-vnet" failed (add): IPAM Invoker Add failed with error: failed to add ipam invoker: Failed to get IP address from CNS: http request failed: Post "http://localhost:10090/network/requestipconfigs": dial tcp 127.0.0.1:10090: connect: connection refused
+22:56:34 voting-app     Pulled                    vote-c8f767c54-95lkm                       Container image "springlaughing/voting-vote:e0035c5" already present on machine and can be accessed by the pod
+22:56:34 voting-app     Started                   vote-c8f767c54-95lkm                       Container started
+22:56:34 voting-app     Unhealthy                 vote-c8f767c54-95lkm                       Readiness probe failed: Get "http://192.168.1.82:80/vote": dial tcp 192.168.1.82:80: connect: connection refused
+22:56:48 default        Starting                  aks-system-19447125-vmss000000             <none>
+22:58:28 default        NoVMEventScheduled        aks-system-19447125-vmss000000             Node condition VMEventScheduled is now: Unknown, reason: NoVMEventScheduled, message: "Unable to verify scheduled events (IMDS unavailable)"
+22:58:28 default        NoVMEventScheduled        aks-system-19447125-vmss000000             Node condition VMEventScheduled is now: False, reason: NoVMEventScheduled, message: "VM has no scheduled event"
