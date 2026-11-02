@@ -32,6 +32,17 @@ spec:
       labels:
         app: postgres
     spec:
+      # Default: pods wait 300 s for a NotReady node to come back. For the
+      # database, waiting costs more than moving (test N1: 5 of 12 minutes).
+      tolerations:
+        - key: node.kubernetes.io/not-ready
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 30
+        - key: node.kubernetes.io/unreachable
+          operator: Exists
+          effect: NoExecute
+          tolerationSeconds: 30
       containers:
         - name: postgres
           image: postgres:15-alpine          # same version as Project 1
