@@ -12,4 +12,4 @@ spec:
     - vote.aks.springlaughing.dev
   issuerRef:
     kind: ClusterIssuer
-    name: letsencrypt-staging
+    name: letsencrypt-prod
