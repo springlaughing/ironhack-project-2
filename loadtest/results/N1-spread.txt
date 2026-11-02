@@ -1,0 +1,12 @@
+Vote pods per node:
+  aks-system-19447125-vmss000000 2
+  aks-system-19447125-vmss000001 2
+  aks-system-19447125-vmss000002 2
+Other pods:
+  postgres-b945c85c8-wvwc6 aks-system-19447125-vmss000000
+  redis-65c886958d-n8s7t aks-system-19447125-vmss000002
+  result-66ffdd5d75-7tj7z aks-system-19447125-vmss000002
+  worker-0 aks-system-19447125-vmss000000
+  worker-1 aks-system-19447125-vmss000001
+  worker-2 aks-system-19447125-vmss000002
+  nginx-gateway-nginx-gateway-fabric-746c9cb5fd-rlx6v aks-system-19447125-vmss000002

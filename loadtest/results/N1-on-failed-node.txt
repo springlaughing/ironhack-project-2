@@ -1,0 +1,15 @@
+NAMESPACE      NAME                                       READY   STATUS    RESTARTS   AGE    IP              NODE                             NOMINATED NODE   READINESS GATES
+cert-manager   cert-manager-cainjector-7c84589448-l9fnc   1/1     Running   0          4h5m   192.168.1.165   aks-system-19447125-vmss000000   <none>           <none>
+kube-system    azure-cns-4xlld                            2/2     Running   0          7h5m   10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system    azure-ip-masq-agent-7x8gt                  1/1     Running   0          7h5m   10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system    cloud-node-manager-5cnsm                   1/1     Running   0          7h5m   10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system    coredns-76df789c68-lgt5k                   1/1     Running   0          7h4m   192.168.1.70    aks-system-19447125-vmss000000   <none>           <none>
+kube-system    csi-azuredisk-node-967tl                   3/3     Running   0          7h5m   10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system    csi-azurefile-node-c5cdl                   4/4     Running   0          7h5m   10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system    konnectivity-agent-75569c8547-vtq8l        1/1     Running   0          7h1m   192.168.1.166   aks-system-19447125-vmss000000   <none>           <none>
+kube-system    kube-proxy-mwmxh                           1/1     Running   0          7h5m   10.30.1.5       aks-system-19447125-vmss000000   <none>           <none>
+kube-system    metrics-server-866c8cb87d-vw24h            2/2     Running   0          7h4m   192.168.1.136   aks-system-19447125-vmss000000   <none>           <none>
+voting-app     postgres-b945c85c8-wvwc6                   1/1     Running   0          4h4m   192.168.1.99    aks-system-19447125-vmss000000   <none>           <none>
+voting-app     vote-c8f767c54-46mh2                       1/1     Running   0          4h4m   192.168.1.63    aks-system-19447125-vmss000000   <none>           <none>
+voting-app     vote-c8f767c54-tx89k                       1/1     Running   0          4h4m   192.168.1.71    aks-system-19447125-vmss000000   <none>           <none>
+voting-app     worker-0                                   1/1     Running   0          4h4m   192.168.1.27    aks-system-19447125-vmss000000   <none>           <none>

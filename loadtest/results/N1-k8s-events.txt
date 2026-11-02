@@ -1,0 +1,136 @@
+21:35:36 NS            REASON      OBJECT                            MESSAGE
+21:35:36 kube-system   Unhealthy   metrics-server-866c8cb87d-vw24h   Liveness probe failed: Get "https://192.168.1.136:4443/livez": dial tcp 192.168.1.136:4443: connect: connection refused
+21:35:40 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:43 voting-app    Unhealthy   vote-c8f767c54-wnqz7              Readiness probe failed: Get "http://192.168.0.207:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:44 voting-app    Unhealthy   vote-c8f767c54-9n6cm              Readiness probe failed: Get "http://192.168.0.221:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:46 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:47 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:48 voting-app    Unhealthy   vote-c8f767c54-wnqz7              Readiness probe failed: Get "http://192.168.0.207:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:48 voting-app    Unhealthy   vote-c8f767c54-65ntx              Readiness probe failed: Get "http://192.168.2.27:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:49 voting-app    Unhealthy   vote-c8f767c54-9n6cm              Readiness probe failed: Get "http://192.168.0.221:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:49 voting-app    Unhealthy   vote-c8f767c54-wnqz7              Readiness probe failed: Get "http://192.168.0.207:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:50 voting-app    Unhealthy   vote-c8f767c54-9n6cm              Readiness probe failed: Get "http://192.168.0.221:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:52 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:53 voting-app    Unhealthy   vote-c8f767c54-65ntx              Readiness probe failed: Get "http://192.168.2.27:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:54 voting-app    Unhealthy   vote-c8f767c54-wnqz7              Readiness probe failed: Get "http://192.168.0.207:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:54 voting-app    Unhealthy   vote-c8f767c54-65ntx              Readiness probe failed: Get "http://192.168.2.27:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:55 voting-app    Unhealthy   vote-c8f767c54-9n6cm              Readiness probe failed: Get "http://192.168.0.221:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:56 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:59 voting-app    Unhealthy   vote-c8f767c54-wnqz7              Readiness probe failed: Get "http://192.168.0.207:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:35:59 voting-app    Unhealthy   vote-c8f767c54-65ntx              Readiness probe failed: Get "http://192.168.2.27:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:00 voting-app    Unhealthy   vote-c8f767c54-9n6cm              Readiness probe failed: Get "http://192.168.0.221:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:01 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:04 voting-app    Unhealthy   vote-c8f767c54-wnqz7              Readiness probe failed: Get "http://192.168.0.207:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:04 voting-app    Unhealthy   vote-c8f767c54-65ntx              Readiness probe failed: Get "http://192.168.2.27:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:05 voting-app    Unhealthy   vote-c8f767c54-9n6cm              Readiness probe failed: Get "http://192.168.0.221:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:09 voting-app    Unhealthy   vote-c8f767c54-wnqz7              Readiness probe failed: Get "http://192.168.0.207:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:09 voting-app    Unhealthy   vote-c8f767c54-65ntx              Readiness probe failed: Get "http://192.168.2.27:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:10 voting-app    Unhealthy   vote-c8f767c54-9n6cm              Readiness probe failed: Get "http://192.168.0.221:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:12 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:14 voting-app    Unhealthy   vote-c8f767c54-wnqz7              Readiness probe failed: Get "http://192.168.0.207:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:14 voting-app    Unhealthy   vote-c8f767c54-65ntx              Readiness probe failed: Get "http://192.168.2.27:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:15 voting-app    Unhealthy   vote-c8f767c54-9n6cm              Readiness probe failed: Get "http://192.168.0.221:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:17 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:18 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:19 voting-app    Unhealthy   vote-c8f767c54-wnqz7              Readiness probe failed: Get "http://192.168.0.207:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:19 voting-app    Unhealthy   vote-c8f767c54-65ntx              Readiness probe failed: Get "http://192.168.2.27:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:20 voting-app    Unhealthy   vote-c8f767c54-9n6cm              Readiness probe failed: Get "http://192.168.0.221:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:23 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:24 voting-app    Unhealthy   vote-c8f767c54-65ntx              Readiness probe failed: Get "http://192.168.2.27:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:28 voting-app    Unhealthy   vote-c8f767c54-wb2nx              Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:29 voting-app    Unhealthy   vote-c8f767c54-wnqz7              Readiness probe failed: Get "http://192.168.0.207:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:29 voting-app    Unhealthy   vote-c8f767c54-65ntx              Readiness probe failed: Get "http://192.168.2.27:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:30 voting-app    Unhealthy   vote-c8f767c54-9n6cm              Readiness probe failed: Get "http://192.168.0.221:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:36:32 default       NodeNotReady   aks-system-19447125-vmss000000    Node aks-system-19447125-vmss000000 status is now: NodeNotReady
+21:36:32 kube-system   NodeNotReady   cloud-node-manager-5cnsm          Node is not ready
+21:36:32 kube-system   NodeNotReady   csi-azurefile-node-c5cdl          Node is not ready
+21:36:32 kube-system   NodeNotReady   metrics-server-866c8cb87d-vw24h   Node is not ready
+21:36:32 voting-app    NodeNotReady   vote-c8f767c54-46mh2              Node is not ready
+21:36:32 voting-app    NodeNotReady   worker-0                          Node is not ready
+21:36:32 kube-system   NodeNotReady   coredns-76df789c68-lgt5k          Node is not ready
+21:36:32 voting-app    NodeNotReady   postgres-b945c85c8-wvwc6          Node is not ready
+21:36:32 kube-system   NodeNotReady   konnectivity-agent-75569c8547-vtq8l   Node is not ready
+21:36:32 cert-manager   NodeNotReady   cert-manager-cainjector-7c84589448-l9fnc   Node is not ready
+21:36:32 kube-system    NodeNotReady   csi-azuredisk-node-967tl                   Node is not ready
+21:36:32 kube-system    NodeNotReady   kube-proxy-mwmxh                           Node is not ready
+21:36:32 kube-system    NodeNotReady   azure-cns-4xlld                            Node is not ready
+21:36:32 voting-app     NodeNotReady   vote-c8f767c54-tx89k                       Node is not ready
+21:36:32 kube-system    NodeNotReady   azure-ip-masq-agent-7x8gt                  Node is not ready
+21:36:33 voting-app     Unhealthy      vote-c8f767c54-wb2nx                       Readiness probe failed: Get "http://192.168.2.254:80/vote": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+21:37:02 kube-system    TaintManagerEviction   coredns-76df789c68-lgt5k                   Marking for deletion Pod kube-system/coredns-76df789c68-lgt5k
+21:37:02 kube-system    TaintManagerEviction   metrics-server-866c8cb87d-vw24h            Marking for deletion Pod kube-system/metrics-server-866c8cb87d-vw24h
+21:37:02 kube-system    TaintManagerEviction   konnectivity-agent-75569c8547-vtq8l        Marking for deletion Pod kube-system/konnectivity-agent-75569c8547-vtq8l
+21:37:02 kube-system    SuccessfulCreate       konnectivity-agent-75569c8547              Created pod: konnectivity-agent-75569c8547-nxxmk
+21:37:02 kube-system    Scheduled              konnectivity-agent-75569c8547-nxxmk        Successfully assigned kube-system/konnectivity-agent-75569c8547-nxxmk to aks-system-19447125-vmss000001
+21:37:02 kube-system    SuccessfulCreate       metrics-server-866c8cb87d                  Created pod: metrics-server-866c8cb87d-tlncb
+21:37:02 kube-system    Scheduled              metrics-server-866c8cb87d-tlncb            Successfully assigned kube-system/metrics-server-866c8cb87d-tlncb to aks-system-19447125-vmss000001
+21:37:02 kube-system    SuccessfulCreate       coredns-76df789c68                         Created pod: coredns-76df789c68-kp7cm
+21:37:02 kube-system    Scheduled              coredns-76df789c68-kp7cm                   Successfully assigned kube-system/coredns-76df789c68-kp7cm to aks-system-19447125-vmss000002
+21:37:02 kube-system    Pulling                coredns-76df789c68-kp7cm                   Pulling image "mcr.microsoft.com/oss/v2/kubernetes/coredns:v1.14.3-21"
+21:37:03 kube-system    Pulled                 konnectivity-agent-75569c8547-nxxmk        Container image "mcr.microsoft.com/oss/v2/kubernetes/apiserver-network-proxy/agent:v0.32.1-22" already present on machine and can be accessed by the pod
+21:37:03 kube-system    Created                konnectivity-agent-75569c8547-nxxmk        Container created
+21:37:03 kube-system    Pulled                 metrics-server-866c8cb87d-tlncb            Container image "mcr.microsoft.com/oss/v2/kubernetes/autoscaler/addon-resizer:v1.8.23-37" already present on machine and can be accessed by the pod
+21:37:03 kube-system    Created                metrics-server-866c8cb87d-tlncb            Container created
+21:37:03 kube-system    Started                konnectivity-agent-75569c8547-nxxmk        Container started
+21:37:03 kube-system    Unhealthy              konnectivity-agent-75569c8547-nxxmk        Readiness probe failed: Get "http://192.168.0.79:8082/ready": dial tcp 192.168.0.79:8082: connect: connection refused
+21:37:03 kube-system    Unhealthy              konnectivity-agent-75569c8547-nxxmk        Readiness probe failed: HTTP probe failed with statuscode: 503
+21:37:03 kube-system    Started                metrics-server-866c8cb87d-tlncb            Container started
+21:37:03 kube-system    Pulled                 metrics-server-866c8cb87d-tlncb            Container image "mcr.microsoft.com/oss/v2/kubernetes/metrics-server:v0.8.0-30" already present on machine and can be accessed by the pod
+21:37:03 kube-system    Created                metrics-server-866c8cb87d-tlncb            Container created
+21:37:03 kube-system    Started                metrics-server-866c8cb87d-tlncb            Container started
+21:37:04 kube-system    Pulled                 coredns-76df789c68-kp7cm                   Successfully pulled image "mcr.microsoft.com/oss/v2/kubernetes/coredns:v1.14.3-21" in 1.814s (1.814s including waiting). Image size: 33754203 bytes.
+21:37:04 kube-system    Created                coredns-76df789c68-kp7cm                   Container created
+21:37:04 kube-system    Started                coredns-76df789c68-kp7cm                   Container started
+21:37:04 kube-system    Unhealthy              coredns-76df789c68-kp7cm                   Readiness probe failed: Get "http://192.168.2.206:8181/ready": dial tcp 192.168.2.206:8181: connect: connection refused
+21:38:04 kube-system    Unhealthy              metrics-server-866c8cb87d-tlncb            Readiness probe failed: HTTP probe failed with statuscode: 500
+21:41:32 voting-app     TaintManagerEviction   postgres-b945c85c8-wvwc6                   Marking for deletion Pod voting-app/postgres-b945c85c8-wvwc6
+21:41:32 voting-app     TaintManagerEviction   vote-c8f767c54-46mh2                       Marking for deletion Pod voting-app/vote-c8f767c54-46mh2
+21:41:32 cert-manager   TaintManagerEviction   cert-manager-cainjector-7c84589448-l9fnc   Marking for deletion Pod cert-manager/cert-manager-cainjector-7c84589448-l9fnc
+21:41:32 voting-app     TaintManagerEviction   worker-0                                   Marking for deletion Pod voting-app/worker-0
+21:41:32 voting-app     TaintManagerEviction   vote-c8f767c54-tx89k                       Marking for deletion Pod voting-app/vote-c8f767c54-tx89k
+21:41:32 voting-app     SuccessfulCreate       vote-c8f767c54                             Created pod: vote-c8f767c54-4sbjl
+21:41:32 voting-app     FailedScheduling       vote-c8f767c54-4sbjl                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+21:41:32 voting-app     SuccessfulCreate       postgres-b945c85c8                         Created pod: postgres-b945c85c8-ppvtb
+21:41:32 cert-manager   SuccessfulCreate       cert-manager-cainjector-7c84589448         Created pod: cert-manager-cainjector-7c84589448-t8jsr
+21:41:32 cert-manager   Scheduled              cert-manager-cainjector-7c84589448-t8jsr   Successfully assigned cert-manager/cert-manager-cainjector-7c84589448-t8jsr to aks-system-19447125-vmss000001
+21:41:32 voting-app     Scheduled              postgres-b945c85c8-ppvtb                   Successfully assigned voting-app/postgres-b945c85c8-ppvtb to aks-system-19447125-vmss000002
+21:41:32 voting-app     SuccessfulCreate       vote-c8f767c54                             Created pod: vote-c8f767c54-95lkm
+21:41:32 voting-app     FailedScheduling       vote-c8f767c54-95lkm                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+21:41:32 voting-app     FailedAttachVolume     postgres-b945c85c8-ppvtb                   Waiting for detach for volume "pvc-7ad6c5bf-c707-4434-b8a6-208d4ec5fd88" Volume is already used by pod(s) postgres-b945c85c8-wvwc6
+21:41:32 cert-manager   Pulling                cert-manager-cainjector-7c84589448-t8jsr   Pulling image "quay.io/jetstack/cert-manager-cainjector:v1.21.3"
+21:41:34 default        NodeRebootStart        aks-system-19447125-vmss000000             Node remediation is initiating a reboot action due to NotReady status persisting >5 minutes. Learn more: aka.ms/aks/node-auto-repair
+21:41:35 cert-manager   Pulled                 cert-manager-cainjector-7c84589448-t8jsr   Successfully pulled image "quay.io/jetstack/cert-manager-cainjector:v1.21.3" in 2.154s (2.154s including waiting). Image size: 12481729 bytes.
+21:41:35 cert-manager   Created                cert-manager-cainjector-7c84589448-t8jsr   Container created
+21:41:35 cert-manager   Started                cert-manager-cainjector-7c84589448-t8jsr   Container started
+21:41:35 kube-system    LeaderElection         cert-manager-cainjector-leader-election    cert-manager-cainjector-7c84589448-t8jsr_102bbc77-a067-4c3b-941a-7560e2b5dfe7 became leader
+21:41:54 default        NodeRebootEnd          aks-system-19447125-vmss000000             Reboot action from node auto-repair has completed. Learn more: aka.ms/aks/node-auto-repair
+21:41:54 default        NodeRebootError        aks-system-19447125-vmss000000             Node auto-repair reboot action failed due to an operation failure. Learn more: aka.ms/aks/node-auto-repair-errors
+21:46:37 voting-app     FailedScheduling       vote-c8f767c54-4sbjl                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+21:46:37 voting-app     FailedScheduling       vote-c8f767c54-95lkm                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+21:46:37 voting-app     FailedScheduling       vote-c8f767c54-4sbjl                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+21:46:37 kube-system    TaintManagerEviction   metrics-server-866c8cb87d-vw24h            Marking for deletion Pod kube-system/metrics-server-866c8cb87d-vw24h
+21:46:37 voting-app     FailedScheduling       vote-c8f767c54-95lkm                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+21:46:37 voting-app     TaintManagerEviction   worker-0                                   Marking for deletion Pod voting-app/worker-0
+21:46:37 voting-app     TaintManagerEviction   vote-c8f767c54-tx89k                       Marking for deletion Pod voting-app/vote-c8f767c54-tx89k
+21:46:37 voting-app     TaintManagerEviction   vote-c8f767c54-46mh2                       Marking for deletion Pod voting-app/vote-c8f767c54-46mh2
+21:46:37 voting-app     TaintManagerEviction   postgres-b945c85c8-wvwc6                   Marking for deletion Pod voting-app/postgres-b945c85c8-wvwc6
+21:46:37 kube-system    TaintManagerEviction   konnectivity-agent-75569c8547-vtq8l        Marking for deletion Pod kube-system/konnectivity-agent-75569c8547-vtq8l
+21:46:37 kube-system    TaintManagerEviction   coredns-76df789c68-lgt5k                   Marking for deletion Pod kube-system/coredns-76df789c68-lgt5k
+21:46:37 cert-manager   TaintManagerEviction   cert-manager-cainjector-7c84589448-l9fnc   Marking for deletion Pod cert-manager/cert-manager-cainjector-7c84589448-l9fnc
+21:46:53 voting-app     FailedScheduling       vote-c8f767c54-4sbjl                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+21:46:53 voting-app     FailedScheduling       vote-c8f767c54-95lkm                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+21:46:53 voting-app     FailedScheduling       vote-c8f767c54-4sbjl                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+21:46:53 voting-app     Scheduled              worker-0                                   Successfully assigned voting-app/worker-0 to aks-system-19447125-vmss000002
+21:46:53 voting-app     SuccessfulCreate       worker                                     Create Pod worker-0 in StatefulSet worker successful
+21:46:54 voting-app     Pulled                 worker-0                                   Container image "springlaughing/voting-worker:076c2f6" already present on machine and can be accessed by the pod
+21:46:54 voting-app     Created                worker-0                                   Container created
+21:46:54 voting-app     Started                worker-0                                   Container started
+21:47:16 voting-app     SuccessfulAttachVolume   postgres-b945c85c8-ppvtb                   AttachVolume.Attach succeeded for volume "pvc-7ad6c5bf-c707-4434-b8a6-208d4ec5fd88" 
+21:47:17 voting-app     Pulling                  postgres-b945c85c8-ppvtb                   Pulling image "postgres:15-alpine"
+21:47:26 voting-app     Pulled                   postgres-b945c85c8-ppvtb                   Successfully pulled image "postgres:15-alpine" in 9.514s (9.514s including waiting). Image size: 115263617 bytes.
+21:47:26 voting-app     Created                  postgres-b945c85c8-ppvtb                   Container created
+21:47:26 voting-app     Started                  postgres-b945c85c8-ppvtb                   Container started
+21:47:26 voting-app     Unhealthy                postgres-b945c85c8-ppvtb                   Readiness probe failed: /var/run/postgresql:5432 - no response
+21:47:26 
+21:52:00 voting-app     FailedScheduling         vote-c8f767c54-95lkm                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.
+21:52:00 voting-app     FailedScheduling         vote-c8f767c54-4sbjl                       0/3 nodes are available: 1 node(s) had untolerated taint(s), 2 node(s) didn't match pod topology spread constraints. no new claims to deallocate, preemption: 0/3 nodes are available: 1 Preemption is not helpful for scheduling, 2 No preemption victims found for incoming pod.

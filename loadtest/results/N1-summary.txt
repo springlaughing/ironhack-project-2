@@ -1,0 +1,74 @@
+
+=== Run N1: aks-system-19447125-vmss000000 (germanywestcentral-2) switched off, PostgreSQL moved to aks-system-19447125-vmss000002
+21:34:07 run N1: PostgreSQL on aks-system-19447125-vmss000000 (germanywestcentral-2) = aks-system-19447125-vmss instance 0
+21:34:32 k6 start: 20 votes/s for 1200s to https://vote.aks.springlaughing.dev/
+21:35:32 FAIL: az vmss deallocate aks-system-19447125-vmss instance 0 (aks-system-19447125-vmss000000, germanywestcentral-2)
+21:35:35 deallocate requested
+21:36:32 node aks-system-19447125-vmss000000 NotReady
+21:47:29 PostgreSQL ready again: postgres-b945c85c8-ppvtb on aks-system-19447125-vmss000002 (germanywestcentral-1)
+21:54:37 k6 done
+21:54:48 queue empty
+
+sent 23907 | accepted (200) 23041 | refused: by Vote 13, by Gateway 1, no answer 852
+saved 23172 | saved minus accepted 131  (negative = accepted votes lost)
+largest Redis queue 13369
+first and last refused vote:
+2026-11-02T21:35:36.095Z refused k6f-N1-38-12: status 502 from Gateway " source=console
+2026-11-02T21:36:48.138Z refused k6f-N1-50-19: status 0 from none request timeout" source=console
+
+pods now:
+NAME                       READY   STATUS    RESTARTS   AGE     IP              NODE                             NOMINATED NODE   READINESS GATES
+postgres-b945c85c8-ppvtb   1/1     Running   0          13m     192.168.2.185   aks-system-19447125-vmss000002   <none>           <none>
+redis-65c886958d-n8s7t     1/1     Running   0          4h25m   192.168.2.145   aks-system-19447125-vmss000002   <none>           <none>
+result-66ffdd5d75-7tj7z    1/1     Running   0          4h25m   192.168.2.79    aks-system-19447125-vmss000002   <none>           <none>
+vote-c8f767c54-4sbjl       0/1     Pending   0          13m     <none>          <none>                           <none>           <none>
+vote-c8f767c54-65ntx       1/1     Running   0          4h25m   192.168.2.27    aks-system-19447125-vmss000002   <none>           <none>
+vote-c8f767c54-95lkm       0/1     Pending   0          13m     <none>          <none>                           <none>           <none>
+vote-c8f767c54-9n6cm       1/1     Running   0          4h25m   192.168.0.221   aks-system-19447125-vmss000001   <none>           <none>
+vote-c8f767c54-wb2nx       1/1     Running   0          4h25m   192.168.2.254   aks-system-19447125-vmss000002   <none>           <none>
+vote-c8f767c54-wnqz7       1/1     Running   0          4h25m   192.168.0.207   aks-system-19447125-vmss000001   <none>           <none>
+worker-0                   1/1     Running   0          7m56s   192.168.2.232   aks-system-19447125-vmss000002   <none>           <none>
+worker-1                   1/1     Running   0          4h25m   192.168.0.55    aks-system-19447125-vmss000001   <none>           <none>
+worker-2                   1/1     Running   0          4h25m   192.168.2.224   aks-system-19447125-vmss000002   <none>           <none>
+
+events about the disk and PostgreSQL:
+21:36:32 default       NodeNotReady   aks-system-19447125-vmss000000    Node aks-system-19447125-vmss000000 status is now: NodeNotReady
+21:36:32 kube-system   NodeNotReady   cloud-node-manager-5cnsm          Node is not ready
+21:36:32 kube-system   NodeNotReady   csi-azurefile-node-c5cdl          Node is not ready
+21:36:32 kube-system   NodeNotReady   metrics-server-866c8cb87d-vw24h   Node is not ready
+21:36:32 voting-app    NodeNotReady   vote-c8f767c54-46mh2              Node is not ready
+21:36:32 voting-app    NodeNotReady   worker-0                          Node is not ready
+21:36:32 kube-system   NodeNotReady   coredns-76df789c68-lgt5k          Node is not ready
+21:36:32 voting-app    NodeNotReady   postgres-b945c85c8-wvwc6          Node is not ready
+21:36:32 kube-system   NodeNotReady   konnectivity-agent-75569c8547-vtq8l   Node is not ready
+21:36:32 cert-manager   NodeNotReady   cert-manager-cainjector-7c84589448-l9fnc   Node is not ready
+21:36:32 kube-system    NodeNotReady   csi-azuredisk-node-967tl                   Node is not ready
+21:36:32 kube-system    NodeNotReady   kube-proxy-mwmxh                           Node is not ready
+21:36:32 kube-system    NodeNotReady   azure-cns-4xlld                            Node is not ready
+21:36:32 voting-app     NodeNotReady   vote-c8f767c54-tx89k                       Node is not ready
+21:36:32 kube-system    NodeNotReady   azure-ip-masq-agent-7x8gt                  Node is not ready
+21:37:02 kube-system    TaintManagerEviction   coredns-76df789c68-lgt5k                   Marking for deletion Pod kube-system/coredns-76df789c68-lgt5k
+21:37:02 kube-system    TaintManagerEviction   metrics-server-866c8cb87d-vw24h            Marking for deletion Pod kube-system/metrics-server-866c8cb87d-vw24h
+21:37:02 kube-system    TaintManagerEviction   konnectivity-agent-75569c8547-vtq8l        Marking for deletion Pod kube-system/konnectivity-agent-75569c8547-vtq8l
+21:41:32 voting-app     TaintManagerEviction   postgres-b945c85c8-wvwc6                   Marking for deletion Pod voting-app/postgres-b945c85c8-wvwc6
+21:41:32 voting-app     TaintManagerEviction   vote-c8f767c54-46mh2                       Marking for deletion Pod voting-app/vote-c8f767c54-46mh2
+21:41:32 cert-manager   TaintManagerEviction   cert-manager-cainjector-7c84589448-l9fnc   Marking for deletion Pod cert-manager/cert-manager-cainjector-7c84589448-l9fnc
+21:41:32 voting-app     TaintManagerEviction   worker-0                                   Marking for deletion Pod voting-app/worker-0
+21:41:32 voting-app     TaintManagerEviction   vote-c8f767c54-tx89k                       Marking for deletion Pod voting-app/vote-c8f767c54-tx89k
+21:41:32 voting-app     SuccessfulCreate       postgres-b945c85c8                         Created pod: postgres-b945c85c8-ppvtb
+21:41:32 voting-app     Scheduled              postgres-b945c85c8-ppvtb                   Successfully assigned voting-app/postgres-b945c85c8-ppvtb to aks-system-19447125-vmss000002
+21:41:32 voting-app     FailedAttachVolume     postgres-b945c85c8-ppvtb                   Waiting for detach for volume "pvc-7ad6c5bf-c707-4434-b8a6-208d4ec5fd88" Volume is already used by pod(s) postgres-b945c85c8-wvwc6
+21:46:37 kube-system    TaintManagerEviction   metrics-server-866c8cb87d-vw24h            Marking for deletion Pod kube-system/metrics-server-866c8cb87d-vw24h
+21:46:37 voting-app     TaintManagerEviction   worker-0                                   Marking for deletion Pod voting-app/worker-0
+21:46:37 voting-app     TaintManagerEviction   vote-c8f767c54-tx89k                       Marking for deletion Pod voting-app/vote-c8f767c54-tx89k
+21:46:37 voting-app     TaintManagerEviction   vote-c8f767c54-46mh2                       Marking for deletion Pod voting-app/vote-c8f767c54-46mh2
+21:46:37 voting-app     TaintManagerEviction   postgres-b945c85c8-wvwc6                   Marking for deletion Pod voting-app/postgres-b945c85c8-wvwc6
+21:46:37 kube-system    TaintManagerEviction   konnectivity-agent-75569c8547-vtq8l        Marking for deletion Pod kube-system/konnectivity-agent-75569c8547-vtq8l
+21:46:37 kube-system    TaintManagerEviction   coredns-76df789c68-lgt5k                   Marking for deletion Pod kube-system/coredns-76df789c68-lgt5k
+21:46:37 cert-manager   TaintManagerEviction   cert-manager-cainjector-7c84589448-l9fnc   Marking for deletion Pod cert-manager/cert-manager-cainjector-7c84589448-l9fnc
+21:47:16 voting-app     SuccessfulAttachVolume   postgres-b945c85c8-ppvtb                   AttachVolume.Attach succeeded for volume "pvc-7ad6c5bf-c707-4434-b8a6-208d4ec5fd88" 
+21:47:17 voting-app     Pulling                  postgres-b945c85c8-ppvtb                   Pulling image "postgres:15-alpine"
+21:47:26 voting-app     Pulled                   postgres-b945c85c8-ppvtb                   Successfully pulled image "postgres:15-alpine" in 9.514s (9.514s including waiting). Image size: 115263617 bytes.
+21:47:26 voting-app     Created                  postgres-b945c85c8-ppvtb                   Container created
+21:47:26 voting-app     Started                  postgres-b945c85c8-ppvtb                   Container started
+21:47:26 voting-app     Unhealthy                postgres-b945c85c8-ppvtb                   Readiness probe failed: /var/run/postgresql:5432 - no response
