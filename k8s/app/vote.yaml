@@ -65,6 +65,14 @@ spec:
             limits:                    # the most it may use
               cpu: 500m                # throttled above half a CPU
               memory: 256Mi            # killed (OOMKilled) above this
+      # In N1 half the lookups went to a CoreDNS pod on the dead node and hung.
+      # Ask for 1 s instead of the default 5 s, then try the other server.
+      dnsConfig:
+        options:
+          - name: timeout
+            value: "1"
+          - name: attempts
+            value: "2"
 ---
 apiVersion: v1
 kind: Service
