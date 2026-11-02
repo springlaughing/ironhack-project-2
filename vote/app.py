@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, make_response, g
+from flask import Flask, render_template, request, make_response
 from redis import Redis, RedisError
 from redis.retry import Retry
 from redis.backoff import NoBackoff
@@ -21,13 +21,16 @@ gunicorn_error_logger = logging.getLogger('gunicorn.error')
 app.logger.handlers.extend(gunicorn_error_logger.handlers)
 app.logger.setLevel(logging.INFO)
 
+# One Redis client per gunicorn worker, created once when the worker starts.
+# Its connection pool keeps connections open and reuses them, so a vote needs
+# no new TCP connection and no DNS lookup of "redis".
+redis_client = Redis(host=redis_host, port=redis_port, db=0,
+                     socket_connect_timeout=2,      # give up connecting after 2 s
+                     socket_timeout=2,              # give up waiting for an answer after 2 s
+                     retry=Retry(NoBackoff(), 0))   # no automatic retries: fail fast, the user retries
+
 def get_redis():
-    if not hasattr(g, 'redis'):
-        g.redis = Redis(host=redis_host, port=redis_port, db=0,
-                        socket_connect_timeout=2,      # give up connecting after 2 s
-                        socket_timeout=2,              # give up waiting for an answer after 2 s
-                        retry=Retry(NoBackoff(), 0))   # no automatic retries: fail fast, the user retries
-    return g.redis
+    return redis_client
 
 @app.route("/", methods=['POST','GET'])
 @app.route("/vote", methods=['POST','GET'])
