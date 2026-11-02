@@ -1,0 +1,17 @@
+# Azure disks for the PersistentVolumeClaims of Redis and PostgreSQL (AKS only).
+# Replaces gp3 (EBS) from k8s/platform/storageclass.yaml.
+#
+# ZRS = zone-redundant storage: Azure writes every block to 3 zones. If the node
+# (and with it the zone) holding PostgreSQL dies, the disk can be attached to a
+# node in another zone. On EKS an EBS volume lived in one zone, so PostgreSQL
+# could not move (Project 2, "limits").
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: managed-csi-zrs
+provisioner: disk.csi.azure.com           # Azure's disk driver, built into AKS
+parameters:
+  skuName: StandardSSD_ZRS                # Standard SSD, replicated across 3 zones
+volumeBindingMode: WaitForFirstConsumer   # create the disk only once the pod is placed
+reclaimPolicy: Delete                     # deleting the PVC deletes the Azure disk
+allowVolumeExpansion: true

@@ -1,0 +1,26 @@
+# The way in from outside on AKS: same Gateway as k8s/platform/gateway.yaml,
+# only the HTTPS hostname differs. NGINX Gateway Fabric's Service of type
+# LoadBalancer gets a public IP on the cluster's Azure load balancer.
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: voting-gateway
+  namespace: voting-app
+spec:
+  gatewayClassName: nginx
+  listeners:
+    - name: http
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: Same
+    - name: https
+      protocol: HTTPS
+      port: 443
+      hostname: vote.aks.springlaughing.dev   # this listener only answers for my name (SNI)
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - kind: Secret
+            name: voting-tls                  # written by cert-manager (step 2)
