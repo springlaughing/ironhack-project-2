@@ -1,0 +1,9 @@
+# cert-manager on AKS: HTTP-01 through the Gateway API, no cloud credentials.
+crds:
+  enabled: true            # Certificate, ClusterIssuer, Order, Challenge, ...
+
+config:                    # cert-manager's own settings
+  apiVersion: controller.config.cert-manager.io/v1alpha1
+  kind: ControllerConfiguration
+  enableGatewayAPI: true   # lets the HTTP-01 solver create HTTPRoutes (off by default);
+                           # the Gateway API CRDs must exist before cert-manager starts

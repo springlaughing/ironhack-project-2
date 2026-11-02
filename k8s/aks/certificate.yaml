@@ -1,0 +1,15 @@
+# The certificate for the Gateway's HTTPS listener on AKS.
+# Starts with staging (untrusted, generous limits); switch issuerRef to
+# letsencrypt-prod once staging was issued. Stored in Secret voting-tls.
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: voting-tls
+  namespace: voting-app
+spec:
+  secretName: voting-tls
+  dnsNames:
+    - vote.aks.springlaughing.dev
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-staging
