@@ -9,8 +9,14 @@ name: ci-cd
 on:
   pull_request:
     branches: [main]
+    paths-ignore: &aks-only     # changes to these alone don't need a build or an EKS deploy
+      - "k8s/aks/**"
+      - "setup-aks.sh"
+      - "teardown-aks.sh"
+      - "**.md"
   push:
     branches: [main]
+    paths-ignore: *aks-only
   workflow_dispatch:   # deploy main again by hand, e.g. after a morning rebuild
 
 permissions:
