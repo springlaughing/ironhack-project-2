@@ -33,7 +33,7 @@ spec:
       enableServiceLinks: false    # no Docker-style REDIS_PORT=tcp://... variables: they broke int(REDIS_PORT)
       containers:
         - name: vote
-          image: springlaughing/voting-vote:e0035c5     # Project 1 image, all fixes included
+          image: springlaughing/voting-vote:814d33b     # Project 1 fixes + one Redis pool per worker
           # Replaces the image's start command (CMD), as Ansible did in Project 1:
           # gunicorn with threads, the change that made voting 85x faster.
           # 2 processes x 4 threads per pod; more capacity = more pods, not more processes.
